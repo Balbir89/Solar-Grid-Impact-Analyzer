@@ -110,10 +110,11 @@ The project provides simulated energy data, EDA visualizations, model performanc
 
 ## About the Author
 
-* **Name:** [Your Full Name Here]
-* **LinkedIn:** [Link to your LinkedIn Profile]
-* **Email:** [Your Email Address]
-* **GitHub:** [Link to your GitHub Profile (e.g., https://github.com/Balbir89)]
+* **Name:** Balbir Singh
+* **LinkedIn:** [https://www.linkedin.com/in/balbir-finance-investment-berlin/](https://www.linkedin.com/in/balbir-finance-investment-berlin/)
+* **Xing:** [https://www.xing.com/profile/Balbir_Singh26/web_profiles](https://www.xing.com/profile/Balbir_Singh26/web_profiles)
+* **Email:** balbirbhatia.20@gmail.com
+* **GitHub:** [https://github.com/Balbir89](https://github.com/Balbir89)
 
 ## License
 
