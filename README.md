@@ -107,6 +107,10 @@ Through this project, I successfully:
 
 My work provides a strong, data-driven foundation for identifying grid inefficiencies and informing strategic decisions for demand-side management and grid optimization, with quantifiable insights into energy patterns.
 
+## Data Sources
+
+The data used in this project (`simulated_eon_grid_data.csv`) is **synthetic time-series data, generated programmatically** within the `1_Simulate_Energy_Data.ipynb` notebook. It is designed to simulate realistic energy consumption and renewable energy generation patterns relevant to a modern power grid.
+
 ## Future Enhancements
 
 * Explored more advanced forecasting models (e.g., ARIMA, LSTM).
