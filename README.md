@@ -6,7 +6,7 @@
 [![Top Language](https://img.shields.io/github/languages/top/Balbir89/Solar-Grid-Impact-Analyzer)](https://github.com/Balbir89/Solar-Grid-Impact-Analyzer)
 
 
-## Project Overview
+## Project Overview: Addressing Energy Sector Challenges (Inspired by E.ON's Context)
 
 My initial goal for this advanced-level data analyst project was to analyze historical and simulated energy consumption data alongside renewable energy generation patterns (specifically solar). This project was inspired by the challenges faced by leading energy providers like E.ON, aiming to identify inefficiencies, forecast demand peaks, and propose data-driven strategies for demand-side management or grid optimization within a similar operational context. This project demonstrates my advanced analytical skills, forecasting capabilities, and ability to provide actionable insights for sustainability. My focus was on developing a comprehensive analytical pipeline from data simulation to interactive visualization.
 
