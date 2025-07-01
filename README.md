@@ -1,5 +1,11 @@
 # Solar Grid Impact Analyzer: Optimizing Renewable Energy
 
+<!-- Badges (Optional - you can add/remove these) -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
+[![Top Language](https://img.shields.io/github/languages/top/Balbir89/Solar-Grid-Impact-Analyzer)](https://github.com/Balbir89/Solar-Grid-Impact-Analyzer)
+
+
 ## Project Overview
 
 This project analyzes simulated energy data to forecast demand peaks and explore strategies for optimizing renewable energy integration (solar) within an energy grid context. It demonstrates advanced data analysis, forecasting, and visualization skills.
@@ -101,6 +107,13 @@ The project provides simulated energy data, EDA visualizations, model performanc
 * Developed optimization algorithms for demand-side management.
 
 * Implemented a full-stack deployment for broader access.
+
+## About the Author
+
+* **Name:** [Your Full Name Here]
+* **LinkedIn:** [Link to your LinkedIn Profile]
+* **Email:** [Your Email Address]
+* **GitHub:** [Link to your GitHub Profile (e.g., https://github.com/Balbir89)]
 
 ## License
 
