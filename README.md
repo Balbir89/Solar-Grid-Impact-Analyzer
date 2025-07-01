@@ -44,51 +44,49 @@ Solar Grid Impact Analyzer/
 
 ## Setup and Installation
 
-1. **Clone Repository:**
+1.  **Clone Repository:**
 
-   ```
-   git clone <your-repository-url>
-   cd "Solar Grid Impact Analyzer"
-   
-   
-   ```
+    ```
+    git clone [https://github.com/Balbir89/Solar-Grid-Impact-Analyzer.git](https://github.com/Balbir89/Solar-Grid-Impact-Analyzer.git)
+    cd "Solar Grid Impact Analyzer"
 
-   (Replace `<your-repository-url>` with your GitHub repository URL.)
 
-2. **Create & Activate Conda Environment:**
+    ```
 
-   ```
-   conda create -n solar_env python=3.9 pandas numpy scikit-learn matplotlib seaborn jupyterlab
-   conda activate solar_env
-   
-   
-   ```
+2.  **Create & Activate Conda Environment:**
 
-3. **Launch JupyterLab:**
+    ```
+    conda create -n solar_env python=3.9 pandas numpy scikit-learn matplotlib seaborn jupyterlab
+    conda activate solar_env
 
-   ```
-   jupyter lab
-   
-   
-   ```
+
+    ```
+
+3.  **Launch JupyterLab:**
+
+    ```
+    jupyter lab
+
+
+    ```
 
 ## How to Run the Project
 
-1. **Run Jupyter Notebooks Sequentially:**
+1.  **Run Jupyter Notebooks Sequentially:**
 
-   * Open `1_Simulate_Energy_Data.ipynb` and run all cells.
+    * Opened `1_Simulate_Energy_Data.ipynb` and ran all cells.
 
-   * Open `2_EDA_Pre_processing.ipynb` and run all cells.
+    * Opened `2_EDA_Pre_processing.ipynb` and ran all cells.
 
-   * Open `3_Feature_Engineering_Model_Training.ipynb` and run all cells.
+    * Opened `3_Feature_Engineering_Model_Training.ipynb` and ran all cells.
 
-2. **Run Web Dashboard:**
+2.  **Run Web Dashboard:**
 
-   * **Stop JupyterLab:** `Ctrl+C` twice in Terminal.
+    * **Stopped JupyterLab:** `Ctrl+C` twice in Terminal.
 
-   * **Start Web Server:** In Terminal, run `python simple_server.py` (keep this window open).
+    * **Started Web Server:** In Terminal, ran `python simple_server.py` (kept this window open).
 
-   * **Open in Browser:** Go to `http://localhost:8000/4_Deployment_App.html` in your web browser.
+    * **Opened in Browser:** Went to `http://localhost:8000/4_Deployment_App.html` in my web browser.
 
 ## Results and Insights
 
@@ -96,13 +94,13 @@ The project provides simulated energy data, EDA visualizations, model performanc
 
 ## Future Enhancements
 
-* Explore more advanced forecasting models (e.g., ARIMA, LSTM).
+* Explored more advanced forecasting models (e.g., ARIMA, LSTM).
 
-* Integrate real-world external data (weather, holidays).
+* Integrated real-world external data (weather, holidays).
 
-* Develop optimization algorithms for demand-side management.
+* Developed optimization algorithms for demand-side management.
 
-* Implement a full-stack deployment for broader access.
+* Implemented a full-stack deployment for broader access.
 
 ## License
 
