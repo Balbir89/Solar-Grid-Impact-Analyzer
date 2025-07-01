@@ -120,10 +120,10 @@ My work provides a strong, data-driven foundation for identifying grid inefficie
 ## About the Author
 
 * **Name:** Balbir Singh
-* **LinkedIn:** [https://www.linkedin.com/in/balbir-finance-investment-berlin/](https://www.linkedin.com/in/balbir-finance-investment-berlin/)
-* **Xing:** [https://www.xing.com/profile/Balbir_Singh26/web_profiles](https://www.xing.com/profile/Balbir_Singh26/web_profiles)
-* **Email:** balbirbhatia.20@gmail.com
-* **GitHub:** [https://github.com/Balbir89](https://github.com/Balbir89)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/balbir-finance-investment-berlin/)
+[![Xing](https://img.shields.io/badge/Xing-006567?style=for-the-badge&logo=xing&logoColor=white)](https://www.xing.com/profile/Balbir_Singh26/web_profiles)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:balbirbhatia.20@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Balbir89)
 
 ## License
 
