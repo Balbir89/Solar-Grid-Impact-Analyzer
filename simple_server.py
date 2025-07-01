@@ -2,45 +2,32 @@ import http.server
 import socketserver
 import os
 
-PORT = 8000
+# Changed the port to 8002 to avoid "Address already in use" error
+PORT = 8002
 
 class MyHandler(http.server.SimpleHTTPRequestHandler):
     def guess_type(self, path):
         # Override guess_type to always serve .html files as text/html
-        # And .csv files as text/csv
+        # and .csv files as text/csv.
+        # This will apply to any .html or .csv file requested.
         if path.endswith('.html'):
             return 'text/html'
         elif path.endswith('.csv'):
             return 'text/csv'
+        # For all other file types, use the default behavior
         return super().guess_type(path)
 
-    def do_GET(self):
-        # This method handles GET requests
-        # We need to make sure the path is correctly interpreted relative to the current directory
-        # The base path for the server is the directory where simple_server.py is run
+    # We can remove the custom do_GET if guess_type handles the MIME types correctly,
+    # as SimpleHTTPRequestHandler's default do_GET will use guess_type.
+    # If you need specific custom logic for certain paths (e.g., dynamic content),
+    # then a custom do_GET would be necessary, but for serving static files
+    # with custom MIME types, overriding guess_type is often sufficient.
+    # For now, let's rely on the default do_GET which uses guess_type.
+    # If you later need more complex routing or dynamic responses, we can add it back.
 
-        # Construct the full path to the requested file
-        requested_path = self.path.lstrip('/') # Remove leading slash
-        full_path = os.path.join(os.getcwd(), requested_path)
-
-        # If the requested path is for the HTML file, explicitly set content type
-        if requested_path == '4_Deployment_App.html':
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            with open(full_path, 'rb') as file:
-                self.wfile.write(file.read())
-        # If the requested path is for the CSV file, explicitly set content type
-        elif requested_path == 'simulated_eon_grid_data.csv':
-            self.send_response(200)
-            self.send_header('Content-type', 'text/csv')
-            self.end_headers()
-            with open(full_path, 'rb') as file:
-                self.wfile.write(file.read())
-        else:
-            # For all other files, use the default SimpleHTTPRequestHandler behavior
-            super().do_GET()
-
+# Create the server
 with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
-    print(f"serving at port {PORT}")
+    print(f"Serving at port {PORT}")
+    # This line will keep the server running indefinitely until you stop it manually
+    # by pressing Ctrl+C in the terminal.
     httpd.serve_forever()
