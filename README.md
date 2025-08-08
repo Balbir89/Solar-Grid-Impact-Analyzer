@@ -8,21 +8,17 @@
 
 ## Project Overview: Addressing Energy Sector Challenges (Inspired by E.ON's Context)
 
-My initial goal for this advanced-level data analyst project was to analyze historical and simulated energy consumption data alongside renewable energy generation patterns (specifically solar). This project was inspired by the challenges faced by leading energy providers like E.ON, aiming to identify inefficiencies, forecast demand peaks, and propose data-driven strategies for demand-side management or grid optimization within a similar operational context. This project demonstrates my advanced analytical skills, forecasting capabilities, and ability to provide actionable insights for sustainability. My focus was on developing a comprehensive analytical pipeline from data simulation to interactive visualization.
+This project simulates and visualizes the impact of solar energy generation on electricity demand, with a focus on understanding the **Duck Curve** and its implications for grid stability and energy planning.
+
 
 ## Key Features
 
-* **Data Simulation:** Generated realistic synthetic time-series data, including hourly base energy demand and solar generation, spanning **over 3 years (approximately 26,000+ data points)** to capture diverse seasonal and daily patterns.
-
-* **Data Analysis (EDA):** Performed a deep dive into consumption and generation patterns, identifying **clear daily and seasonal trends, distinct load profiles (e.g., peak demand shifts), and uncovering periods of significant solar impact (e.g., a 20-30% reduction in net load during midday solar peaks)**.
-
-* **Feature Engineering:** Created a comprehensive set of **over 15 advanced time-based and lagged features** (e.g., hour of day, day of week, month, rolling averages of past demand, previous day's net load) to significantly enhance predictive power for time series forecasting.
-
-* **Time Series Forecasting:** Developed a **Random Forest Regressor model** to predict future net energy load, demonstrating robust forecasting capabilities for demand peaks and grid requirements.
-
-* **Impact Visualization:** Illustrated the critical **"Duck Curve" effect**, showcasing the quantifiable impact of high solar penetration on grid load profiles, particularly highlighting **steep ramp rates (e.g., up to 1500 MW/hour)** during evening solar decline.
-
-* **Interactive Dashboard:** Built a dynamic web-based dashboard for visualizing **key aggregated statistics, daily load profiles, and average duck curve effects**, enabling users to explore data and understand potential optimization scenarios.
+- Simulation of hourly solar generation and demand profiles.
+- Calculation of net load (demand minus solar generation).
+- Duck Curve visualization showing demand shifts with solar penetration.
+- Built using **Python**, **Pandas**, **Plotly**, and **Matplotlib**.
+- Modular code structure for easy extension or adaptation.
+  
 
 ## Technologies Used
 
