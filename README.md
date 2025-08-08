@@ -10,7 +10,8 @@
 
 This project simulates and visualizes the impact of solar energy generation on electricity demand, with a focus on understanding the **Duck Curve** and its implications for grid stability and energy planning.
 
-## To analyze solar energy generation patterns and their interaction with electricity demand curves. The project aims to:
+## Project Goal
+- To analyze solar energy generation patterns and their interaction with electricity demand curves. The project aims to:
 - Simulate energy production and demand behavior.
 - Identify the "duck curve" phenomenon using real or synthetic data.
 - Visualize grid impact with interactive dashboards and plots.
