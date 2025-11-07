@@ -31,13 +31,12 @@ This project simulates and visualizes the impact of solar energy generation on e
 - Visualize grid impact with interactive dashboards and plots.
 
 
-## Key Features
+## Methods  
 
-- Simulation of hourly solar generation and demand profiles.
-- Calculation of net load (demand minus solar generation).
-- Duck Curve visualization showing demand shifts with solar penetration.
-- Built using **Python**, **Pandas**, **Plotly**, and **Matplotlib**.
-- Modular code structure for easy extension or adaptation.
+- Time-series forecasting using Random Forest Regressor (scikit-learn)  
+- Feature engineering: rolling means, lag features, ramp rate detection  
+- Visual dashboards: Plotly interactive charts + HTML export  
+
   
 
 ## Technologies Used
