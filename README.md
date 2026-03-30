@@ -60,7 +60,7 @@ Develop a forecasting model to analyze energy demand patterns and support data-d
 ---
 
 ##  Dashboard  
-
+### Example Output Visualization
 ![Dashboard](images/dashboard.png)
 
 ---
