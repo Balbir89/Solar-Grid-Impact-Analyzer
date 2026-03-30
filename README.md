@@ -3,12 +3,12 @@
 ---
 
 ##  Business Problem  
-Energy systems face challenges in balancing solar power generation with electricity demand due to variability in weather and usage patterns. This imbalance can lead to inefficiencies, increased operational costs, and difficulty in grid stability management.
+Balancing solar energy generation with electricity demand is challenging due to variability in weather and consumption patterns. This leads to inefficiencies in grid stability and energy distribution.
 
 ---
 
 ##  Objective  
-To develop a forecasting model that analyzes energy demand patterns and supports better decision-making for grid load balancing and energy planning.
+Develop a forecasting model to analyze energy demand patterns and support data-driven decisions for grid load balancing and energy planning.
 
 ---
 
@@ -26,12 +26,21 @@ To develop a forecasting model that analyzes energy demand patterns and supports
 
 ---
 
+##  Project Workflow  
+1. Data Simulation  
+2. Data Cleaning & EDA  
+3. Feature Engineering  
+4. Model Training  
+5. Visualization & Insights  
+
+---
+
 ##  Approach  
 - Cleaned and structured time-series energy data  
 - Performed exploratory data analysis (EDA)  
 - Built Random Forest Regression model  
 - Evaluated model performance  
-- Designed dashboard for visualization  
+- Designed dashboard to visualize demand trends and peak load  
 
 ---
 
@@ -44,20 +53,19 @@ To develop a forecasting model that analyzes energy demand patterns and supports
 ---
 
 ##  Business Impact  
-- Supports energy demand forecasting and planning  
-- Improves grid load balancing decisions  
-- Enables data-driven energy management  
+- Enables data-driven energy planning by improving demand forecasting  
+- Supports better grid load balancing decisions  
+- Helps identify peak load inefficiencies and optimize energy distribution  
 
 ---
 
 ##  Dashboard  
+
 ![Dashboard](images/dashboard.png)
 
 ---
 
-##  How to Run  
+## 🚀 How to Run  
+
 1. Clone the repository  
 2. Install dependencies  
-pip install -r requirements.txt  
-3. Run the notebook  
-
