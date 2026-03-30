@@ -51,7 +51,7 @@ To develop a forecasting model that analyzes energy demand patterns and supports
 ---
 
 ##  Dashboard  
-![Dashboard](images/dashboard.png)
+(![Dashboard](images/dashboard.png))
 
 ---
 
