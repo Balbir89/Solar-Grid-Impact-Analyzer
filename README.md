@@ -70,8 +70,8 @@ Develop a forecasting model to analyze energy demand patterns and support data-d
 1. Clone the repository  
 2. Install dependencies
 
-
-## pip install -r requirements.txt
+ pip install -r requirements.txt
+ 
 3. Run notebooks in order:
 - `1_Simulate_Energy_Data.ipynb`  
 - `2_EDA_Pre_processing.ipynb`  
