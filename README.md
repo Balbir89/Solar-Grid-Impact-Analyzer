@@ -5,7 +5,7 @@ This project addresses the "Duck Curve" challenge in the German energy market. B
 
 ---
 
-### ** Business Impact**
+###  Business Impact
 * **Cost Avoidance:** Optimized battery discharge cycles to avoid peak-hour tariffs (€0.42/kWh vs €0.28/kWh).
 * **Carbon Offset:** Quantified a reduction of **12.4 Tons of CO2** annually by prioritizing self-generation over grid dependency.
 * **Investment ROI:** Provides a 24-month look-ahead to justify capital expenditure on BESS (Battery Energy Storage Systems).
