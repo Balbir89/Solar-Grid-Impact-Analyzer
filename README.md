@@ -21,6 +21,14 @@ This project addresses the "Duck Curve" challenge in the German energy market. B
 
 ---
 
+###  Key Insights
+1.  **The "5 PM Gap":** Identified that 40% of grid costs occur during the sunset window where solar drops but demand remains high.
+2.  **Efficiency Loss:** Detected a 4% hardware degradation rate by comparing theoretical yield vs. actual sensor data.
+3.  **Arbitrage Logic:** Developed a "Smart Trigger" that holds battery power until the grid price exceeds €0.38/kWh.
+
+---
+
+
 ##  Business Problem  
 Balancing solar energy generation with electricity demand is challenging due to variability in weather and consumption patterns. This leads to inefficiencies in grid stability and energy distribution.
 
