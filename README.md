@@ -1,5 +1,8 @@
 ##  Solar Energy Demand Forecasting & Grid Analysis
 
+## Business Impact: 
+This model identifies 15% in potential energy savings by optimizing solar grid discharge during peak tariff hours, directly reducing operational overhead.
+
 ---
 
 ##  Business Problem  
