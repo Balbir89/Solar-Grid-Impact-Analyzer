@@ -1,7 +1,8 @@
-##  Solar Energy Demand Forecasting & Grid Analysis 
+#  Solar Grid Intelligence: Strategic Peak-Shaving & ROI Optimization
 
-## Business Impact: 
-This model identifies 15% in potential energy savings by optimizing solar grid discharge during peak tariff hours, directly reducing operational overhead.
+### **Executive Summary**
+This project addresses the "Duck Curve" challenge in the German energy market. By analyzing real-time solar yield against grid pricing, this model identifies a **15% reduction in operational energy costs** through automated "Sell vs. Store" arbitrage.
+
 
 ---
 
