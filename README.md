@@ -13,7 +13,7 @@ This project addresses the "Duck Curve" challenge in the German energy market. B
 
 ---
 
-### ** Technical Architecture**
+###  Technical Architecture
 * **Python (Pandas/NumPy):** Time-series alignment of weather data and price telemetry.
 * **SQL (Window Functions):** Calculated rolling 7-day volatility and identified "High-Load" anomalies.
 * **Predictive Modeling:** Linear & Polynomial regression to forecast solar yield with 92% accuracy.
