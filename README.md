@@ -201,6 +201,7 @@ Solar-Grid-Impact-Analyzer/
 
 ---
 
-##  Dashboard  
+##  Dashboard
+
 visuals/dashboard.png
 
