@@ -188,7 +188,6 @@ Solar + Weather + Grid Price Data
 
 ---
 
-Repository Structure
 
 Solar-Grid-Impact-Analyzer/
 │
