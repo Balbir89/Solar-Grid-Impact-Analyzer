@@ -11,6 +11,17 @@
 
 ## Overview
 
+This project analyzes the impact of solar energy generation on grid economics and battery storage decisions.
+
+By combining solar production, weather data, and grid price signals, the model:
+- Forecasts peak demand periods
+- Optimizes battery dispatch (sell vs store)
+- Estimates cost savings and carbon reduction
+
+The goal is to simulate intelligent energy management for renewable-integrated grids.
+
+## Overview
+
 **Solar Grid Impact Analyzer** is a data-driven energy analytics project designed to evaluate how solar generation, battery storage, and electricity pricing interact in a grid-connected environment.
 
 The project focuses on a real operational challenge in the energy sector:  
