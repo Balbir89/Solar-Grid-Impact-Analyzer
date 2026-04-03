@@ -5,6 +5,12 @@ This project addresses the "Duck Curve" challenge in the German energy market. B
 
 ---
 
+### The Problem
+Industrial energy consumers in Germany face aggressive peak-hour tariffs (up to €0.42/kWh). Without an optimized discharge strategy, solar-integrated grids often "leak" value by selling power during low-demand windows and purchasing expensive grid power during sunset peaks.
+
+---
+
+
 ###  Business Impact
 * **Cost Avoidance:** Optimized battery discharge cycles to avoid peak-hour tariffs (€0.42/kWh vs €0.28/kWh).
 * **Carbon Offset:** Quantified a reduction of **12.4 Tons of CO2** annually by prioritizing self-generation over grid dependency.
