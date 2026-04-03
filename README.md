@@ -202,6 +202,5 @@ Solar-Grid-Impact-Analyzer/
 ---
 
 ##  Dashboard  
-### Example Output Visualization
-![Dashboard](images/dashboard.png)
+visuals/dashboard.png
 
