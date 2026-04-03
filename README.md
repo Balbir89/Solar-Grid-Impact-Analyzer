@@ -184,7 +184,7 @@ Solar + Weather + Grid Price Data
                 │
                 ▼
  Cost Savings / Carbon Offset / ROI Dashboard
-
+```
 
 ---
 
