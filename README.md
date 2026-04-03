@@ -188,6 +188,8 @@ Solar + Weather + Grid Price Data
 
 ---
 
+## Project Structure
+
 ```text
 Solar-Grid-Impact-Analyzer/
 │
