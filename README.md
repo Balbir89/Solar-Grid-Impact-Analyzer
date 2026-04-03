@@ -186,6 +186,26 @@ Solar + Weather + Grid Price Data
  Cost Savings / Carbon Offset / ROI Dashboard
 
 
+## Project Architecture 
+
+```text
+Solar + Weather + Grid Price Data
+        │
+        ▼
+Data Cleaning & Alignment
+        │
+        ▼
+Feature Engineering / SQL Metrics
+        │
+        ▼
+Peak Detection + Forecasting Models
+        │
+        ▼
+Sell vs Store Battery Dispatch Logic
+        │
+        ▼
+Cost Savings / Carbon Offset / ROI Dashboard
+
 ---
 
 
