@@ -188,7 +188,7 @@ Solar + Weather + Grid Price Data
 
 ---
 
-
+```text
 Solar-Grid-Impact-Analyzer/
 │
 ├── data/                     # Input datasets
@@ -198,6 +198,7 @@ Solar-Grid-Impact-Analyzer/
 ├── solar_optimizer.py        # Main analysis / optimization script
 ├── requirements.txt          # Project dependencies
 └── README.md                 # Project documentation
+```
 
 ---
 
