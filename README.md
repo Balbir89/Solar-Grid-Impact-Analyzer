@@ -185,17 +185,19 @@ Solar + Weather + Grid Price Data
 
 ## Project Structure
 
-```text
 Solar-Grid-Impact-Analyzer/
-│
-├── data/                     # Input datasets
-├── notebooks/                # Exploratory analysis notebooks
-├── sql/                      # SQL scripts for window analytics
-├── visuals/                  # Charts, dashboard screenshots
-├── solar_optimizer.py        # Main analysis / optimization script
-├── requirements.txt          # Project dependencies
-└── README.md                 # Project documentation
-```
+├── 1_Simulate_Energy_Data.ipynb
+├── 2_EDA_Pre_processing.ipynb
+├── 3_Feature_Engineering_Model_Training.ipynb
+├── 4_Deployment_App.html
+├── simulated_eon_grid_data.csv
+├── weather_data_fetcher_py.ipynb
+├── sql/
+│   └── solar_grid_kpi_analysis.sql
+├── simple_server.py
+├── dashboard.png
+├── requirements.txt
+└── README.md
 
 ---
 
