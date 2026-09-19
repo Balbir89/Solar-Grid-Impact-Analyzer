@@ -185,6 +185,7 @@ Solar + Weather + Grid Price Data
 
 ## Project Structure
 
+```text
 Solar-Grid-Impact-Analyzer/
 ├── 1_Simulate_Energy_Data.ipynb
 ├── 2_EDA_Pre_processing.ipynb
@@ -198,6 +199,7 @@ Solar-Grid-Impact-Analyzer/
 ├── dashboard.png
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
