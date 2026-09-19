@@ -59,20 +59,14 @@ The main objectives of this project are to:
 
 ---
 
-## Key Results
+## Scope and Limitations
 
-Based on the current analysis, the project highlights:
+This is an independent portfolio project using simulated energy data. It explores solar generation, electricity prices and battery dispatch scenarios.
 
-- **15% reduction in operational energy cost** through optimized battery discharge and energy arbitrage
-- **Peak-hour tariff avoidance** by shifting dispatch away from expensive grid purchase windows
-- **12.4 tons of annual CO2 reduction** by prioritizing self-generation over grid dependency
-- **24-month ROI outlook** to support battery investment planning
-- **92% forecasting accuracy** using linear and polynomial regression models
-- Identification of the **5 PM gap**, where a major share of grid cost occurs after solar production drops
-- Detection of a **4% hardware degradation trend** by comparing theoretical vs. actual solar yield
-- A smart battery release trigger when grid price exceeds **€0.38/kWh**
+Cost savings, carbon reductions and investment payback are modeled estimates, not measured customer outcomes. They depend on the input data and assumptions.
 
-These findings are described in your current repository README and are presented here in a more recruiter-friendly format. :contentReference[oaicite:1]{index=1}
+Forecasting performance should be evaluated on a chronological holdout set and compared with a baseline before drawing conclusions about real-world performance.
+
 
 ---
 
