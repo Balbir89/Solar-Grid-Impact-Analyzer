@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "scenario": "Synthetic commercial site; no measured client savings",
+  "config": {
+    "start": "2023-01-01",
+    "end_exclusive": "2025-01-01",
+    "seed": 42,
+    "train_end": "2024-01-01",
+    "test_start": "2024-07-01",
+    "pv_capacity_kw": 1200,
+    "battery_capacity_kwh": 1000,
+    "battery_power_kw": 500,
+    "charge_efficiency": 0.95,
+    "discharge_efficiency": 0.95,
+    "battery_capex_eur_per_kwh": 350,
+    "annual_opex_fraction": 0.02,
+    "throughput_cost_eur_per_kwh": 0.02,
+    "discount_rate": 0.08,
+    "project_years": 10,
+    "annual_savings_decline": 0.02,
+    "grid_carbon_kg_per_kwh": 0.35,
+    "n_estimators": 64
+  },
+  "input_rows": 17544,
+  "input_sha256": "e3d799b9fae0b2e51e3e6802a15bb82d8d5923f3e60e3264ac15b0d8bdcb0c0b",
+  "source_sha256": "dce1a54280792341981991b6e5911ca115762bb2de9212df7b6f913b80b0a066",
+  "environment": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1"
+  },
+  "quality": {
+    "rows_checked": 17544,
+    "unique_timestamps": 17544,
+    "balance_failures": 0,
+    "simultaneous_import_export": 0
+  },
+  "forecast": {
+    "horizon_hours": 1,
+    "feature_count": 14,
+    "train_rows": 8592,
+    "validation_rows": 4368,
+    "test_rows": 4416,
+    "test_start": "2024-07-01 00:00:00+00:00",
+    "test_end": "2024-12-31 23:00:00+00:00",
+    "validation_candidates": [
+      {
+        "min_samples_leaf": 4,
+        "mae_kw": 46.086253501331306,
+        "rmse_kw": 63.37349510845955,
+        "r2": 0.9318602077390864
+      },
+      {
+        "min_samples_leaf": 12,
+        "mae_kw": 47.35793466800306,
+        "rmse_kw": 65.18980722325036,
+        "r2": 0.9278984037478338
+      }
+    ],
+    "selected_min_samples_leaf": 4,
+    "test_metrics": {
+      "random_forest": {
+        "mae_kw": 41.90747667109912,
+        "rmse_kw": 57.07734157620169,
+        "r2": 0.9344705066608436
+      },
+      "previous_hour": {
+        "mae_kw": 85.47920907735322,
+        "rmse_kw": 111.87278409975875,
+        "r2": 0.7482565220356026
+      },
+      "previous_day": {
+        "mae_kw": 98.14507580491689,
+        "rmse_kw": 142.10116721648646,
+        "r2": 0.5938330086554269
+      },
+      "previous_week": {
+        "mae_kw": 76.59759038541924,
+        "rmse_kw": 120.2061282314002,
+        "r2": 0.7093552025216494
+      }
+    },
+    "development_backtests": [
+      {
+        "train_last": "2023-10-31 23:00:00+00:00",
+        "test_first": "2023-11-01 00:00:00+00:00",
+        "test_last": "2023-11-30 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 46.70361710455492,
+          "rmse_kw": 66.02758903855401,
+          "r2": 0.8250643888923322
+        },
+        "previous_day": {
+          "mae_kw": 93.68724874348314,
+          "rmse_kw": 133.34117114432695,
+          "r2": 0.286562590806248
+        }
+      },
+      {
+        "train_last": "2024-01-20 23:00:00+00:00",
+        "test_first": "2024-01-21 00:00:00+00:00",
+        "test_last": "2024-02-19 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 38.178612823280595,
+          "rmse_kw": 49.796982140015224,
+          "r2": 0.8965658138669708
+        },
+        "previous_day": {
+          "mae_kw": 92.47448547174139,
+          "rmse_kw": 125.91370506889716,
+          "r2": 0.33869156730209815
+        }
+      },
+      {
+        "train_last": "2024-04-10 23:00:00+00:00",
+        "test_first": "2024-04-11 00:00:00+00:00",
+        "test_last": "2024-05-10 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 51.994189441102584,
+          "rmse_kw": 71.9465159434366,
+          "r2": 0.9050356027387492
+        },
+        "previous_day": {
+          "mae_kw": 121.74877327330275,
+          "rmse_kw": 184.59902231010582,
+          "r2": 0.37482720123010704
+        }
+      }
+    ],
+    "diagnostic_interval": {
+      "validation_abs_error_p90_kw": 103.13544887531721,
+      "test_coverage": 0.9257246376811594,
+      "note": "Empirical diagnostic band; no future coverage guarantee."
+    },
+    "feature_importance": {
+      "hour_sin": 0.033964501092843595,
+      "hour_cos": 0.007756523895441943,
+      "day_sin": 0.0036037730945476477,
+      "day_cos": 0.004034002440320516,
+      "weekday": 0.002129614774537068,
+      "net_lag_1": 0.7058088222019432,
+      "net_lag_24": 0.00723708586105861,
+      "net_lag_168": 0.19539681409670165,
+      "demand_lag_1": 0.006975763593883971,
+      "solar_lag_1": 0.010163444411730053,
+      "solar_lag_24": 0.010442471091798288,
+      "net_mean_24": 0.004763641236613954,
+      "net_min_24": 0.004375919497364386,
+      "net_max_24": 0.003347622711215063
+    }
+  },
+  "economics_period": {
+    "start": "2024-01-01 00:00:00+00:00",
+    "end": "2024-12-31 23:00:00+00:00"
+  },
+  "economics": {
+    "observed_hours": 8784,
+    "annualization_factor": 0.9979508196721312,
+    "baseline_cost_eur": 728735.0763968863,
+    "battery_energy_cost_eur": 708190.5080059562,
+    "wear_cost_eur": 1533.30353300098,
+    "annual_operating_savings_eur": 18972.30734797428,
+    "annual_opex_eur": 7000.0,
+    "annual_net_savings_eur": 11972.307347974282,
+    "capex_eur": 350000,
+    "npv_eur": -279050.622579507,
+    "project_years": 10,
+    "simple_payback_years": 29.234130884488202,
+    "peak_import_kw": 960.4293981087758,
+    "baseline_peak_import_kw": 960.4293981087758,
+    "charge_kwh": 84947.56415517896,
+    "discharge_kwh": 76665.176650049,
+    "loss_kwh": 8282.387505129947,
+    "end_soc_kwh": 0.0,
+    "site_import_emissions_reduction_tonnes": 26.83281182751715,
+    "net_emissions_reduction_with_export_credit_tonnes": -2.898835626795484,
+    "cashflows_eur": [
+      -350000,
+      11972.307347974282,
+      11592.861201014795,
+      11221.0039769945,
+      10856.58389745461,
+      10499.452219505514,
+      10149.463175115405,
+      9806.473911613099,
+      9470.344433380837,
+      9140.937544713219,
+      8818.118793818954
+    ]
+  },
+  "sensitivity": [
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 10247.259786164806,
+      "npv_eur": -37298.88766770375,
+      "simple_payback_years": 9.75870643340316
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 8747.259786164806,
+      "npv_eur": -122364.00976611591,
+      "simple_payback_years": 20.006265307998575
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 7247.259786164806,
+      "npv_eur": -207429.13186452808,
+      "simple_payback_years": 34.49579667024715
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 14972.307347974282,
+      "npv_eur": -108920.37838268265,
+      "simple_payback_years": 13.357994552994501
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 11972.307347974282,
+      "npv_eur": -279050.622579507,
+      "simple_payback_years": 29.234130884488202
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 8972.307347974282,
+      "npv_eur": -449180.8667763313,
+      "simple_payback_years": 55.727025458271584
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 17079.484992600577,
+      "npv_eur": -297802.32325718383,
+      "simple_payback_years": 23.41990991960787
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 11079.484992600577,
+      "npv_eur": -638062.8116508324,
+      "simple_payback_years": 63.17983195676462
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 5079.484992600577,
+      "npv_eur": -978323.3000444811,
+      "simple_payback_years": 196.87035230081926
+    }
+  ]
+}
