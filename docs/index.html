@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A reproducible Python and SQL case study in solar forecasting and battery investment decisions. Synthetic data; measured backtest results.">
+<title>Solar Grid Impact Analyzer | Energy decision lab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+<header><a class="brand" href="./"><span class="mark" aria-hidden="true">☀</span> SOLAR GRID <strong>IMPACT</strong></a><nav><a href="https://github.com/Balbir89/Solar-Grid-Impact-Analyzer">Source & case study ↗</a><a href="methodology.md">Methodology</a><span class="pill">SYNTHETIC STUDY</span></nav></header>
+<main>
+<section class="hero"><div><div class="eyebrow">ENERGY DECISION LAB / CASE STUDY 02</div><h1>Forecast the load.<br><span>Question the investment.</span></h1><p>One commercial site. Two years of simulated hourly data. Python forecasts and auditable SQL turn a solar-storage scenario into an investment decision.</p><div class="tags"><span>PYTHON</span><span>SQL / SQLITE</span><span>RANDOM FOREST</span><span>BATTERY ECONOMICS</span></div></div><aside class="decision"><div class="eyebrow">BASE SCENARIO / 10-YEAR NPV</div><div id="hero-npv" class="big negative">Loading…</div><h2 id="decision-title">Evaluating the business case</h2><p id="decision-copy">Results are loaded from the versioned Python run.</p></aside></section>
+<div id="error" role="alert" hidden></div>
+<section class="metrics" aria-label="Key results">
+<article><span>HOURLY OBSERVATIONS</span><strong id="rows">—</strong><small>2023–2024 · deterministic simulation</small></article>
+<article><span>FORECAST MAE</span><strong id="mae">—</strong><small>One hour ahead · final holdout</small></article>
+<article><span>ERROR REDUCTION</span><strong id="improvement">—</strong><small>Against the best simple baseline</small></article>
+<article><span>ANNUAL NET BENEFIT</span><strong id="cash">—</strong><small>Battery only · after wear & fixed OPEX</small></article>
+</section>
+<section class="grid">
+<article class="panel chart-panel"><div class="panel-top"><div><div class="eyebrow">01 / FORECAST VALIDATION</div><h2>Future hours, observed past</h2></div><span class="pill">JUL–DEC 2024</span></div><p>Daily mean net load for readability. Error metrics use every hourly observation.</p><svg id="forecast-chart" viewBox="0 0 760 280" role="img" aria-label="Actual and predicted daily average net load"></svg><div class="legend"><span><i class="teal"></i>Actual load</span><span><i class="gold"></i>Random Forest</span></div><p class="note">Only readings available through the previous hour enter the forecast. This is a rolling one-hour evaluation, not a six-month forecast made in July.</p></article>
+<article class="panel"><div class="eyebrow">02 / CHALLENGE THE MODEL</div><h2>Beat the simple alternatives</h2><p>Mean absolute error · kW · lower is better</p><div id="model-bars"></div><div class="callout">No same-hour demand or solar inputs. No current-target rolling averages. A separate test checks that changing future data cannot alter earlier features.</div></article>
+<article class="panel"><div class="panel-top"><div><div class="eyebrow">03 / STORAGE VALUE</div><h2>Cash flow is only half the story</h2></div><select id="month" aria-label="Select economics month"><option value="all">Full year 2024</option></select></div><div class="mini-metrics"><div><span>Solar-only electricity bill</span><strong id="baseline-bill">—</strong></div><div><span>With storage + wear cost</span><strong id="battery-bill">—</strong></div></div><svg id="savings-chart" viewBox="0 0 760 250" role="img" aria-label="Monthly battery savings before fixed operating costs"></svg><p class="note">Monthly savings exclude fixed OPEX. Annual net benefit includes it. Solar capital cost is outside this incremental battery decision.</p></article>
+<article class="panel"><div class="eyebrow">04 / INVESTMENT SENSITIVITY</div><h2>Change the assumptions</h2><p>Precomputed simulations; fixed 500 kW charge/discharge limit.</p><div class="controls"><label>Storage capacity<select id="capacity"><option value="0">0 kWh</option><option value="500">500 kWh</option><option value="1000" selected>1,000 kWh</option><option value="2000">2,000 kWh</option></select></label><label>Installed CAPEX<select id="capex"><option value="200">€200 / kWh</option><option value="350" selected>€350 / kWh</option><option value="500">€500 / kWh</option></select></label></div><div class="scenario-result"><span>SCENARIO NET PRESENT VALUE</span><strong id="scenario-npv">—</strong><p id="scenario-net"></p></div><p class="note">8% discount rate · 10 years · 2% annual savings decline · OPEX 2% of initial CAPEX. No subsidy, tax, residual value or battery replacement credit.</p></article>
+<article class="panel full"><div class="panel-top"><div><div class="eyebrow">05 / PHYSICAL CONSTRAINTS</div><h2>Every stored kWh has a cost</h2></div><span class="pill">NO FREE INITIAL ENERGY</span></div><div class="constraints"><div><strong id="charge">—</strong><span>PV energy charged</span></div><div><strong id="discharge">—</strong><span>Energy delivered to load</span></div><div><strong id="loss">—</strong><span>Conversion losses</span></div><div><strong id="carbon">—</strong><span>Net emissions reduction*</span></div></div><p class="note">*The same carbon factor is applied to imports and foregone solar exports. Storage losses can increase net emissions under this assumption; reduced site imports alone are not a system-wide carbon saving.</p></article>
+</section>
+<section class="footnote"><h2>Evidence before claims.</h2><p>This is an independent portfolio simulation, not a customer deployment or an electricity trading recommendation. Financial and carbon estimates depend on the stated assumptions. Model performance on real metered data remains unverified.</p><a href="data.json">Download dashboard evidence (JSON) ↗</a><span id="hash"></span></section>
+</main><footer>Built by Balbir Singh · Data & Financial Analytics <a href="https://github.com/Balbir89/Solar-Grid-Impact-Analyzer">Explore the implementation ↗</a></footer>
+</div>
+<script src="app.js" defer></script>
+</body></html>

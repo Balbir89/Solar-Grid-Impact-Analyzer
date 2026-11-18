@@ -1,0 +1,20 @@
+{
+  "start": "2023-01-01",
+  "end_exclusive": "2025-01-01",
+  "seed": 42,
+  "train_end": "2024-01-01",
+  "test_start": "2024-07-01",
+  "pv_capacity_kw": 1200,
+  "battery_capacity_kwh": 1000,
+  "battery_power_kw": 500,
+  "charge_efficiency": 0.95,
+  "discharge_efficiency": 0.95,
+  "battery_capex_eur_per_kwh": 350,
+  "annual_opex_fraction": 0.02,
+  "throughput_cost_eur_per_kwh": 0.02,
+  "discount_rate": 0.08,
+  "project_years": 10,
+  "annual_savings_decline": 0.02,
+  "grid_carbon_kg_per_kwh": 0.35,
+  "n_estimators": 64
+}

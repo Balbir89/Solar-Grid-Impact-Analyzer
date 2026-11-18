@@ -1,0 +1,4262 @@
+{
+  "schema_version": 1,
+  "scenario": "Synthetic commercial site; no measured client savings",
+  "config": {
+    "start": "2023-01-01",
+    "end_exclusive": "2025-01-01",
+    "seed": 42,
+    "train_end": "2024-01-01",
+    "test_start": "2024-07-01",
+    "pv_capacity_kw": 1200,
+    "battery_capacity_kwh": 1000,
+    "battery_power_kw": 500,
+    "charge_efficiency": 0.95,
+    "discharge_efficiency": 0.95,
+    "battery_capex_eur_per_kwh": 350,
+    "annual_opex_fraction": 0.02,
+    "throughput_cost_eur_per_kwh": 0.02,
+    "discount_rate": 0.08,
+    "project_years": 10,
+    "annual_savings_decline": 0.02,
+    "grid_carbon_kg_per_kwh": 0.35,
+    "n_estimators": 64
+  },
+  "input_rows": 17544,
+  "input_sha256": "e3d799b9fae0b2e51e3e6802a15bb82d8d5923f3e60e3264ac15b0d8bdcb0c0b",
+  "source_sha256": "dce1a54280792341981991b6e5911ca115762bb2de9212df7b6f913b80b0a066",
+  "environment": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1"
+  },
+  "quality": {
+    "rows_checked": 17544,
+    "unique_timestamps": 17544,
+    "balance_failures": 0,
+    "simultaneous_import_export": 0
+  },
+  "forecast": {
+    "horizon_hours": 1,
+    "feature_count": 14,
+    "train_rows": 8592,
+    "validation_rows": 4368,
+    "test_rows": 4416,
+    "test_start": "2024-07-01 00:00:00+00:00",
+    "test_end": "2024-12-31 23:00:00+00:00",
+    "validation_candidates": [
+      {
+        "min_samples_leaf": 4,
+        "mae_kw": 46.086253501331306,
+        "rmse_kw": 63.37349510845955,
+        "r2": 0.9318602077390864
+      },
+      {
+        "min_samples_leaf": 12,
+        "mae_kw": 47.35793466800306,
+        "rmse_kw": 65.18980722325036,
+        "r2": 0.9278984037478338
+      }
+    ],
+    "selected_min_samples_leaf": 4,
+    "test_metrics": {
+      "random_forest": {
+        "mae_kw": 41.90747667109912,
+        "rmse_kw": 57.07734157620169,
+        "r2": 0.9344705066608436
+      },
+      "previous_hour": {
+        "mae_kw": 85.47920907735322,
+        "rmse_kw": 111.87278409975875,
+        "r2": 0.7482565220356026
+      },
+      "previous_day": {
+        "mae_kw": 98.14507580491689,
+        "rmse_kw": 142.10116721648646,
+        "r2": 0.5938330086554269
+      },
+      "previous_week": {
+        "mae_kw": 76.59759038541924,
+        "rmse_kw": 120.2061282314002,
+        "r2": 0.7093552025216494
+      }
+    },
+    "development_backtests": [
+      {
+        "train_last": "2023-10-31 23:00:00+00:00",
+        "test_first": "2023-11-01 00:00:00+00:00",
+        "test_last": "2023-11-30 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 46.70361710455492,
+          "rmse_kw": 66.02758903855401,
+          "r2": 0.8250643888923322
+        },
+        "previous_day": {
+          "mae_kw": 93.68724874348314,
+          "rmse_kw": 133.34117114432695,
+          "r2": 0.286562590806248
+        }
+      },
+      {
+        "train_last": "2024-01-20 23:00:00+00:00",
+        "test_first": "2024-01-21 00:00:00+00:00",
+        "test_last": "2024-02-19 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 38.178612823280595,
+          "rmse_kw": 49.796982140015224,
+          "r2": 0.8965658138669708
+        },
+        "previous_day": {
+          "mae_kw": 92.47448547174139,
+          "rmse_kw": 125.91370506889716,
+          "r2": 0.33869156730209815
+        }
+      },
+      {
+        "train_last": "2024-04-10 23:00:00+00:00",
+        "test_first": "2024-04-11 00:00:00+00:00",
+        "test_last": "2024-05-10 23:00:00+00:00",
+        "rows": 720,
+        "random_forest": {
+          "mae_kw": 51.994189441102584,
+          "rmse_kw": 71.9465159434366,
+          "r2": 0.9050356027387492
+        },
+        "previous_day": {
+          "mae_kw": 121.74877327330275,
+          "rmse_kw": 184.59902231010582,
+          "r2": 0.37482720123010704
+        }
+      }
+    ],
+    "diagnostic_interval": {
+      "validation_abs_error_p90_kw": 103.13544887531721,
+      "test_coverage": 0.9257246376811594,
+      "note": "Empirical diagnostic band; no future coverage guarantee."
+    },
+    "feature_importance": {
+      "hour_sin": 0.033964501092843595,
+      "hour_cos": 0.007756523895441943,
+      "day_sin": 0.0036037730945476477,
+      "day_cos": 0.004034002440320516,
+      "weekday": 0.002129614774537068,
+      "net_lag_1": 0.7058088222019432,
+      "net_lag_24": 0.00723708586105861,
+      "net_lag_168": 0.19539681409670165,
+      "demand_lag_1": 0.006975763593883971,
+      "solar_lag_1": 0.010163444411730053,
+      "solar_lag_24": 0.010442471091798288,
+      "net_mean_24": 0.004763641236613954,
+      "net_min_24": 0.004375919497364386,
+      "net_max_24": 0.003347622711215063
+    }
+  },
+  "economics_period": {
+    "start": "2024-01-01 00:00:00+00:00",
+    "end": "2024-12-31 23:00:00+00:00"
+  },
+  "economics": {
+    "observed_hours": 8784,
+    "annualization_factor": 0.9979508196721312,
+    "baseline_cost_eur": 728735.0763968863,
+    "battery_energy_cost_eur": 708190.5080059562,
+    "wear_cost_eur": 1533.30353300098,
+    "annual_operating_savings_eur": 18972.30734797428,
+    "annual_opex_eur": 7000.0,
+    "annual_net_savings_eur": 11972.307347974282,
+    "capex_eur": 350000,
+    "npv_eur": -279050.622579507,
+    "project_years": 10,
+    "simple_payback_years": 29.234130884488202,
+    "peak_import_kw": 960.4293981087758,
+    "baseline_peak_import_kw": 960.4293981087758,
+    "charge_kwh": 84947.56415517896,
+    "discharge_kwh": 76665.176650049,
+    "loss_kwh": 8282.387505129947,
+    "end_soc_kwh": 0.0,
+    "site_import_emissions_reduction_tonnes": 26.83281182751715,
+    "net_emissions_reduction_with_export_credit_tonnes": -2.898835626795484,
+    "cashflows_eur": [
+      -350000,
+      11972.307347974282,
+      11592.861201014795,
+      11221.0039769945,
+      10856.58389745461,
+      10499.452219505514,
+      10149.463175115405,
+      9806.473911613099,
+      9470.344433380837,
+      9140.937544713219,
+      8818.118793818954
+    ]
+  },
+  "sensitivity": [
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 0.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 0.0,
+      "npv_eur": 0.0,
+      "simple_payback_years": null
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 10247.259786164806,
+      "npv_eur": -37298.88766770375,
+      "simple_payback_years": 9.75870643340316
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 8747.259786164806,
+      "npv_eur": -122364.00976611591,
+      "simple_payback_years": 20.006265307998575
+    },
+    {
+      "capacity_kwh": 500.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 7247.259786164806,
+      "npv_eur": -207429.13186452808,
+      "simple_payback_years": 34.49579667024715
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 14972.307347974282,
+      "npv_eur": -108920.37838268265,
+      "simple_payback_years": 13.357994552994501
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 11972.307347974282,
+      "npv_eur": -279050.622579507,
+      "simple_payback_years": 29.234130884488202
+    },
+    {
+      "capacity_kwh": 1000.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 8972.307347974282,
+      "npv_eur": -449180.8667763313,
+      "simple_payback_years": 55.727025458271584
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 200.0,
+      "annual_net_savings_eur": 17079.484992600577,
+      "npv_eur": -297802.32325718383,
+      "simple_payback_years": 23.41990991960787
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 350.0,
+      "annual_net_savings_eur": 11079.484992600577,
+      "npv_eur": -638062.8116508324,
+      "simple_payback_years": 63.17983195676462
+    },
+    {
+      "capacity_kwh": 2000.0,
+      "capex_eur_kwh": 500.0,
+      "annual_net_savings_eur": 5079.484992600577,
+      "npv_eur": -978323.3000444811,
+      "simple_payback_years": 196.87035230081926
+    }
+  ],
+  "daily_forecast": [
+    {
+      "date": "2024-07-01",
+      "target_kw": 183.41500098413925,
+      "random_forest_kw": 173.3355063124212,
+      "previous_day_kw": 60.35195190456957
+    },
+    {
+      "date": "2024-07-02",
+      "target_kw": 286.7343494553981,
+      "random_forest_kw": 275.54039906929006,
+      "previous_day_kw": 183.41500098413925
+    },
+    {
+      "date": "2024-07-03",
+      "target_kw": 300.18956748510533,
+      "random_forest_kw": 299.85351761458816,
+      "previous_day_kw": 286.7343494553981
+    },
+    {
+      "date": "2024-07-04",
+      "target_kw": 274.5046713674862,
+      "random_forest_kw": 264.750466198316,
+      "previous_day_kw": 300.18956748510533
+    },
+    {
+      "date": "2024-07-05",
+      "target_kw": 250.46559192998401,
+      "random_forest_kw": 253.44982750858136,
+      "previous_day_kw": 274.5046713674862
+    },
+    {
+      "date": "2024-07-06",
+      "target_kw": 123.86327244043876,
+      "random_forest_kw": 122.86511259204816,
+      "previous_day_kw": 250.46559192998401
+    },
+    {
+      "date": "2024-07-07",
+      "target_kw": 3.615073845600224,
+      "random_forest_kw": 16.307077005751022,
+      "previous_day_kw": 123.86327244043876
+    },
+    {
+      "date": "2024-07-08",
+      "target_kw": 353.4993692129296,
+      "random_forest_kw": 324.4819294914075,
+      "previous_day_kw": 3.615073845600224
+    },
+    {
+      "date": "2024-07-09",
+      "target_kw": 141.26253557674363,
+      "random_forest_kw": 153.9614615039073,
+      "previous_day_kw": 353.4993692129296
+    },
+    {
+      "date": "2024-07-10",
+      "target_kw": 271.8698385336319,
+      "random_forest_kw": 267.1512985330612,
+      "previous_day_kw": 141.26253557674363
+    },
+    {
+      "date": "2024-07-11",
+      "target_kw": 359.7424934003778,
+      "random_forest_kw": 351.63412912192115,
+      "previous_day_kw": 271.8698385336319
+    },
+    {
+      "date": "2024-07-12",
+      "target_kw": 346.8083942448641,
+      "random_forest_kw": 325.5757952092303,
+      "previous_day_kw": 359.7424934003778
+    },
+    {
+      "date": "2024-07-13",
+      "target_kw": 157.64301837695322,
+      "random_forest_kw": 161.73336358734696,
+      "previous_day_kw": 346.8083942448641
+    },
+    {
+      "date": "2024-07-14",
+      "target_kw": 198.6417164029307,
+      "random_forest_kw": 182.26696581001497,
+      "previous_day_kw": 157.64301837695322
+    },
+    {
+      "date": "2024-07-15",
+      "target_kw": 193.87033373377434,
+      "random_forest_kw": 211.50326759366362,
+      "previous_day_kw": 198.6417164029307
+    },
+    {
+      "date": "2024-07-16",
+      "target_kw": 113.21871659074658,
+      "random_forest_kw": 122.76452407697172,
+      "previous_day_kw": 193.87033373377434
+    },
+    {
+      "date": "2024-07-17",
+      "target_kw": 277.4515322863168,
+      "random_forest_kw": 265.3742868856696,
+      "previous_day_kw": 113.21871659074658
+    },
+    {
+      "date": "2024-07-18",
+      "target_kw": 230.39150409711098,
+      "random_forest_kw": 240.9400370979932,
+      "previous_day_kw": 277.4515322863168
+    },
+    {
+      "date": "2024-07-19",
+      "target_kw": 210.7961107432809,
+      "random_forest_kw": 215.77960247053434,
+      "previous_day_kw": 230.39150409711098
+    },
+    {
+      "date": "2024-07-20",
+      "target_kw": 127.8758575220403,
+      "random_forest_kw": 124.41495482883232,
+      "previous_day_kw": 210.7961107432809
+    },
+    {
+      "date": "2024-07-21",
+      "target_kw": 123.09223934194345,
+      "random_forest_kw": 122.34552871799043,
+      "previous_day_kw": 127.8758575220403
+    },
+    {
+      "date": "2024-07-22",
+      "target_kw": 257.7950160061568,
+      "random_forest_kw": 247.3245414202877,
+      "previous_day_kw": 123.09223934194345
+    },
+    {
+      "date": "2024-07-23",
+      "target_kw": 223.341632160856,
+      "random_forest_kw": 217.04285621937095,
+      "previous_day_kw": 257.7950160061568
+    },
+    {
+      "date": "2024-07-24",
+      "target_kw": 292.8851256565089,
+      "random_forest_kw": 269.72127944418486,
+      "previous_day_kw": 223.341632160856
+    },
+    {
+      "date": "2024-07-25",
+      "target_kw": 151.04654645657507,
+      "random_forest_kw": 166.11738340632928,
+      "previous_day_kw": 292.8851256565089
+    },
+    {
+      "date": "2024-07-26",
+      "target_kw": 301.2639731902954,
+      "random_forest_kw": 303.0665212822184,
+      "previous_day_kw": 151.04654645657507
+    },
+    {
+      "date": "2024-07-27",
+      "target_kw": 118.92651681041382,
+      "random_forest_kw": 139.962454336422,
+      "previous_day_kw": 301.2639731902954
+    },
+    {
+      "date": "2024-07-28",
+      "target_kw": 162.46740184074517,
+      "random_forest_kw": 155.16606353244177,
+      "previous_day_kw": 118.92651681041382
+    },
+    {
+      "date": "2024-07-29",
+      "target_kw": 218.36221067852458,
+      "random_forest_kw": 209.6604523162397,
+      "previous_day_kw": 162.46740184074517
+    },
+    {
+      "date": "2024-07-30",
+      "target_kw": 228.5703984366539,
+      "random_forest_kw": 225.70546993427618,
+      "previous_day_kw": 218.36221067852458
+    },
+    {
+      "date": "2024-07-31",
+      "target_kw": 164.60834000748633,
+      "random_forest_kw": 173.41397282582355,
+      "previous_day_kw": 228.5703984366539
+    },
+    {
+      "date": "2024-08-01",
+      "target_kw": 408.9948029301167,
+      "random_forest_kw": 377.50351773449825,
+      "previous_day_kw": 164.60834000748633
+    },
+    {
+      "date": "2024-08-02",
+      "target_kw": 302.4297946985647,
+      "random_forest_kw": 306.93114279932945,
+      "previous_day_kw": 408.9948029301167
+    },
+    {
+      "date": "2024-08-03",
+      "target_kw": 321.6796243646275,
+      "random_forest_kw": 313.05462400570644,
+      "previous_day_kw": 302.4297946985647
+    },
+    {
+      "date": "2024-08-04",
+      "target_kw": 177.92087155077934,
+      "random_forest_kw": 187.91264081932067,
+      "previous_day_kw": 321.6796243646275
+    },
+    {
+      "date": "2024-08-05",
+      "target_kw": 442.40323248261234,
+      "random_forest_kw": 403.8560079596082,
+      "previous_day_kw": 177.92087155077934
+    },
+    {
+      "date": "2024-08-06",
+      "target_kw": 358.3958704527781,
+      "random_forest_kw": 334.7306783908909,
+      "previous_day_kw": 442.40323248261234
+    },
+    {
+      "date": "2024-08-07",
+      "target_kw": 249.22200273644762,
+      "random_forest_kw": 237.5168350721027,
+      "previous_day_kw": 358.3958704527781
+    },
+    {
+      "date": "2024-08-08",
+      "target_kw": 341.55392875757974,
+      "random_forest_kw": 343.3121313851998,
+      "previous_day_kw": 249.22200273644762
+    },
+    {
+      "date": "2024-08-09",
+      "target_kw": 324.23370220375654,
+      "random_forest_kw": 313.7484527345355,
+      "previous_day_kw": 341.55392875757974
+    },
+    {
+      "date": "2024-08-10",
+      "target_kw": 302.62718014138017,
+      "random_forest_kw": 322.609098199281,
+      "previous_day_kw": 324.23370220375654
+    },
+    {
+      "date": "2024-08-11",
+      "target_kw": 87.44292229124498,
+      "random_forest_kw": 105.56666676181594,
+      "previous_day_kw": 302.62718014138017
+    },
+    {
+      "date": "2024-08-12",
+      "target_kw": 327.3758915309591,
+      "random_forest_kw": 323.89218225995745,
+      "previous_day_kw": 87.44292229124498
+    },
+    {
+      "date": "2024-08-13",
+      "target_kw": 333.73322067245994,
+      "random_forest_kw": 330.98088179379937,
+      "previous_day_kw": 327.3758915309591
+    },
+    {
+      "date": "2024-08-14",
+      "target_kw": 274.4738688173199,
+      "random_forest_kw": 260.7959041694456,
+      "previous_day_kw": 333.73322067245994
+    },
+    {
+      "date": "2024-08-15",
+      "target_kw": 415.33640866411207,
+      "random_forest_kw": 394.3178036529294,
+      "previous_day_kw": 274.4738688173199
+    },
+    {
+      "date": "2024-08-16",
+      "target_kw": 471.0731966136232,
+      "random_forest_kw": 436.21171928873133,
+      "previous_day_kw": 415.33640866411207
+    },
+    {
+      "date": "2024-08-17",
+      "target_kw": 123.58143562825715,
+      "random_forest_kw": 151.0180267077026,
+      "previous_day_kw": 471.0731966136232
+    },
+    {
+      "date": "2024-08-18",
+      "target_kw": 169.90153678213196,
+      "random_forest_kw": 156.43925480640664,
+      "previous_day_kw": 123.58143562825715
+    },
+    {
+      "date": "2024-08-19",
+      "target_kw": 305.7185332038239,
+      "random_forest_kw": 299.0214264039807,
+      "previous_day_kw": 169.90153678213196
+    },
+    {
+      "date": "2024-08-20",
+      "target_kw": 257.7894633311044,
+      "random_forest_kw": 275.154920679566,
+      "previous_day_kw": 305.7185332038239
+    },
+    {
+      "date": "2024-08-21",
+      "target_kw": 224.62231629796202,
+      "random_forest_kw": 235.9332255691944,
+      "previous_day_kw": 257.7894633311044
+    },
+    {
+      "date": "2024-08-22",
+      "target_kw": 252.0218926193157,
+      "random_forest_kw": 271.48266244647897,
+      "previous_day_kw": 224.62231629796202
+    },
+    {
+      "date": "2024-08-23",
+      "target_kw": 276.18573977701874,
+      "random_forest_kw": 282.88689545668234,
+      "previous_day_kw": 252.0218926193157
+    },
+    {
+      "date": "2024-08-24",
+      "target_kw": 102.49268377174097,
+      "random_forest_kw": 120.50511682952833,
+      "previous_day_kw": 276.18573977701874
+    },
+    {
+      "date": "2024-08-25",
+      "target_kw": 150.79638201186518,
+      "random_forest_kw": 150.51891093654922,
+      "previous_day_kw": 102.49268377174097
+    },
+    {
+      "date": "2024-08-26",
+      "target_kw": 289.5184859848611,
+      "random_forest_kw": 284.0185554221307,
+      "previous_day_kw": 150.79638201186518
+    },
+    {
+      "date": "2024-08-27",
+      "target_kw": 320.75138481449886,
+      "random_forest_kw": 320.03457710865246,
+      "previous_day_kw": 289.5184859848611
+    },
+    {
+      "date": "2024-08-28",
+      "target_kw": 284.946485444964,
+      "random_forest_kw": 276.31421516242193,
+      "previous_day_kw": 320.75138481449886
+    },
+    {
+      "date": "2024-08-29",
+      "target_kw": 317.17053716018535,
+      "random_forest_kw": 312.90946190187935,
+      "previous_day_kw": 284.946485444964
+    },
+    {
+      "date": "2024-08-30",
+      "target_kw": 424.48273154619613,
+      "random_forest_kw": 394.95060271915537,
+      "previous_day_kw": 317.17053716018535
+    },
+    {
+      "date": "2024-08-31",
+      "target_kw": 256.44974568230106,
+      "random_forest_kw": 254.78886048554622,
+      "previous_day_kw": 424.48273154619613
+    },
+    {
+      "date": "2024-09-01",
+      "target_kw": 234.2884504842394,
+      "random_forest_kw": 225.97292166851102,
+      "previous_day_kw": 256.44974568230106
+    },
+    {
+      "date": "2024-09-02",
+      "target_kw": 398.3541858477138,
+      "random_forest_kw": 375.64958599150333,
+      "previous_day_kw": 234.2884504842394
+    },
+    {
+      "date": "2024-09-03",
+      "target_kw": 341.5649619456708,
+      "random_forest_kw": 338.98303949425446,
+      "previous_day_kw": 398.3541858477138
+    },
+    {
+      "date": "2024-09-04",
+      "target_kw": 316.2663215287743,
+      "random_forest_kw": 310.92177142526106,
+      "previous_day_kw": 341.5649619456708
+    },
+    {
+      "date": "2024-09-05",
+      "target_kw": 396.7445526337453,
+      "random_forest_kw": 377.9316556030115,
+      "previous_day_kw": 316.2663215287743
+    },
+    {
+      "date": "2024-09-06",
+      "target_kw": 388.98122029072346,
+      "random_forest_kw": 402.021140440868,
+      "previous_day_kw": 396.7445526337453
+    },
+    {
+      "date": "2024-09-07",
+      "target_kw": 152.85687393235122,
+      "random_forest_kw": 172.049885330428,
+      "previous_day_kw": 388.98122029072346
+    },
+    {
+      "date": "2024-09-08",
+      "target_kw": 296.82921022923875,
+      "random_forest_kw": 285.9699578528224,
+      "previous_day_kw": 152.85687393235122
+    },
+    {
+      "date": "2024-09-09",
+      "target_kw": 373.5141222756138,
+      "random_forest_kw": 366.2632499914093,
+      "previous_day_kw": 296.82921022923875
+    },
+    {
+      "date": "2024-09-10",
+      "target_kw": 444.53011219837504,
+      "random_forest_kw": 430.01119021297,
+      "previous_day_kw": 373.5141222756138
+    },
+    {
+      "date": "2024-09-11",
+      "target_kw": 411.4017820106969,
+      "random_forest_kw": 394.2415881571469,
+      "previous_day_kw": 444.53011219837504
+    },
+    {
+      "date": "2024-09-12",
+      "target_kw": 387.90093769205356,
+      "random_forest_kw": 394.27092643773534,
+      "previous_day_kw": 411.4017820106969
+    },
+    {
+      "date": "2024-09-13",
+      "target_kw": 362.39540958941774,
+      "random_forest_kw": 364.5067478791234,
+      "previous_day_kw": 387.90093769205356
+    },
+    {
+      "date": "2024-09-14",
+      "target_kw": 269.8610232755265,
+      "random_forest_kw": 270.7695337704961,
+      "previous_day_kw": 362.39540958941774
+    },
+    {
+      "date": "2024-09-15",
+      "target_kw": 266.0619162254579,
+      "random_forest_kw": 279.6904390886925,
+      "previous_day_kw": 269.8610232755265
+    },
+    {
+      "date": "2024-09-16",
+      "target_kw": 376.4686572251815,
+      "random_forest_kw": 357.0180868375724,
+      "previous_day_kw": 266.0619162254579
+    },
+    {
+      "date": "2024-09-17",
+      "target_kw": 401.39055356173145,
+      "random_forest_kw": 400.62457684859584,
+      "previous_day_kw": 376.4686572251815
+    },
+    {
+      "date": "2024-09-18",
+      "target_kw": 409.4771024202234,
+      "random_forest_kw": 412.50448475297793,
+      "previous_day_kw": 401.39055356173145
+    },
+    {
+      "date": "2024-09-19",
+      "target_kw": 409.5513486049393,
+      "random_forest_kw": 400.6938836765991,
+      "previous_day_kw": 409.4771024202234
+    },
+    {
+      "date": "2024-09-20",
+      "target_kw": 369.9294028155919,
+      "random_forest_kw": 372.7022035222266,
+      "previous_day_kw": 409.5513486049393
+    },
+    {
+      "date": "2024-09-21",
+      "target_kw": 273.5177731692055,
+      "random_forest_kw": 289.01921534586984,
+      "previous_day_kw": 369.9294028155919
+    },
+    {
+      "date": "2024-09-22",
+      "target_kw": 245.36298572077098,
+      "random_forest_kw": 256.9029370733397,
+      "previous_day_kw": 273.5177731692055
+    },
+    {
+      "date": "2024-09-23",
+      "target_kw": 369.27082445773493,
+      "random_forest_kw": 359.85306244956354,
+      "previous_day_kw": 245.36298572077098
+    },
+    {
+      "date": "2024-09-24",
+      "target_kw": 406.9313966169641,
+      "random_forest_kw": 402.8227695144281,
+      "previous_day_kw": 369.27082445773493
+    },
+    {
+      "date": "2024-09-25",
+      "target_kw": 397.67721720769026,
+      "random_forest_kw": 406.5215646674185,
+      "previous_day_kw": 406.9313966169641
+    },
+    {
+      "date": "2024-09-26",
+      "target_kw": 404.32202167795737,
+      "random_forest_kw": 410.9242303787237,
+      "previous_day_kw": 397.67721720769026
+    },
+    {
+      "date": "2024-09-27",
+      "target_kw": 376.6178655811629,
+      "random_forest_kw": 372.47138185818227,
+      "previous_day_kw": 404.32202167795737
+    },
+    {
+      "date": "2024-09-28",
+      "target_kw": 325.97539083026277,
+      "random_forest_kw": 333.9776692286326,
+      "previous_day_kw": 376.6178655811629
+    },
+    {
+      "date": "2024-09-29",
+      "target_kw": 279.10686742038735,
+      "random_forest_kw": 280.4535528918805,
+      "previous_day_kw": 325.97539083026277
+    },
+    {
+      "date": "2024-09-30",
+      "target_kw": 389.7215961306847,
+      "random_forest_kw": 373.8091501845981,
+      "previous_day_kw": 279.10686742038735
+    },
+    {
+      "date": "2024-10-01",
+      "target_kw": 449.77029183690723,
+      "random_forest_kw": 442.19957576638535,
+      "previous_day_kw": 389.7215961306847
+    },
+    {
+      "date": "2024-10-02",
+      "target_kw": 434.1230909265107,
+      "random_forest_kw": 425.8080226321411,
+      "previous_day_kw": 449.77029183690723
+    },
+    {
+      "date": "2024-10-03",
+      "target_kw": 410.96678415207225,
+      "random_forest_kw": 401.8844775999365,
+      "previous_day_kw": 434.1230909265107
+    },
+    {
+      "date": "2024-10-04",
+      "target_kw": 453.99640294941736,
+      "random_forest_kw": 437.0207697977137,
+      "previous_day_kw": 410.96678415207225
+    },
+    {
+      "date": "2024-10-05",
+      "target_kw": 335.630566651204,
+      "random_forest_kw": 341.0049457380906,
+      "previous_day_kw": 453.99640294941736
+    },
+    {
+      "date": "2024-10-06",
+      "target_kw": 287.4225861665753,
+      "random_forest_kw": 302.14298458461116,
+      "previous_day_kw": 335.630566651204
+    },
+    {
+      "date": "2024-10-07",
+      "target_kw": 436.94746089031287,
+      "random_forest_kw": 429.59326559136383,
+      "previous_day_kw": 287.4225861665753
+    },
+    {
+      "date": "2024-10-08",
+      "target_kw": 501.1829415397401,
+      "random_forest_kw": 482.3286612074291,
+      "previous_day_kw": 436.94746089031287
+    },
+    {
+      "date": "2024-10-09",
+      "target_kw": 482.3140849036311,
+      "random_forest_kw": 479.8397258314714,
+      "previous_day_kw": 501.1829415397401
+    },
+    {
+      "date": "2024-10-10",
+      "target_kw": 431.33428313397957,
+      "random_forest_kw": 435.8814546159186,
+      "previous_day_kw": 482.3140849036311
+    },
+    {
+      "date": "2024-10-11",
+      "target_kw": 437.84455346019655,
+      "random_forest_kw": 428.77154993571406,
+      "previous_day_kw": 431.33428313397957
+    },
+    {
+      "date": "2024-10-12",
+      "target_kw": 299.77048623789904,
+      "random_forest_kw": 307.38829642099313,
+      "previous_day_kw": 437.84455346019655
+    },
+    {
+      "date": "2024-10-13",
+      "target_kw": 362.3232414596632,
+      "random_forest_kw": 358.93157358948025,
+      "previous_day_kw": 299.77048623789904
+    },
+    {
+      "date": "2024-10-14",
+      "target_kw": 423.1039138594394,
+      "random_forest_kw": 425.46119579515,
+      "previous_day_kw": 362.3232414596632
+    },
+    {
+      "date": "2024-10-15",
+      "target_kw": 462.4239941706167,
+      "random_forest_kw": 468.16202402858715,
+      "previous_day_kw": 423.1039138594394
+    },
+    {
+      "date": "2024-10-16",
+      "target_kw": 466.6555869487831,
+      "random_forest_kw": 459.65323524216836,
+      "previous_day_kw": 462.4239941706167
+    },
+    {
+      "date": "2024-10-17",
+      "target_kw": 506.040865299058,
+      "random_forest_kw": 491.67478191865354,
+      "previous_day_kw": 466.6555869487831
+    },
+    {
+      "date": "2024-10-18",
+      "target_kw": 462.77196519794137,
+      "random_forest_kw": 453.74272746439993,
+      "previous_day_kw": 506.040865299058
+    },
+    {
+      "date": "2024-10-19",
+      "target_kw": 354.5478805417177,
+      "random_forest_kw": 347.9504273208284,
+      "previous_day_kw": 462.77196519794137
+    },
+    {
+      "date": "2024-10-20",
+      "target_kw": 345.8116671850269,
+      "random_forest_kw": 353.308123664874,
+      "previous_day_kw": 354.5478805417177
+    },
+    {
+      "date": "2024-10-21",
+      "target_kw": 581.8689613862441,
+      "random_forest_kw": 531.6626459050508,
+      "previous_day_kw": 345.8116671850269
+    },
+    {
+      "date": "2024-10-22",
+      "target_kw": 515.4973411856031,
+      "random_forest_kw": 509.5820872061691,
+      "previous_day_kw": 581.8689613862441
+    },
+    {
+      "date": "2024-10-23",
+      "target_kw": 478.4561209019825,
+      "random_forest_kw": 475.4672903572122,
+      "previous_day_kw": 515.4973411856031
+    },
+    {
+      "date": "2024-10-24",
+      "target_kw": 461.4013955742336,
+      "random_forest_kw": 476.5392220738285,
+      "previous_day_kw": 478.4561209019825
+    },
+    {
+      "date": "2024-10-25",
+      "target_kw": 547.7217583957475,
+      "random_forest_kw": 525.8702474329815,
+      "previous_day_kw": 461.4013955742336
+    },
+    {
+      "date": "2024-10-26",
+      "target_kw": 322.28243674584354,
+      "random_forest_kw": 340.5075056926345,
+      "previous_day_kw": 547.7217583957475
+    },
+    {
+      "date": "2024-10-27",
+      "target_kw": 342.4985855589462,
+      "random_forest_kw": 346.7315980120072,
+      "previous_day_kw": 322.28243674584354
+    },
+    {
+      "date": "2024-10-28",
+      "target_kw": 516.3111955720801,
+      "random_forest_kw": 511.0185744457828,
+      "previous_day_kw": 342.4985855589462
+    },
+    {
+      "date": "2024-10-29",
+      "target_kw": 491.38967175571287,
+      "random_forest_kw": 506.4749533788508,
+      "previous_day_kw": 516.3111955720801
+    },
+    {
+      "date": "2024-10-30",
+      "target_kw": 528.7234831069749,
+      "random_forest_kw": 514.6185086437745,
+      "previous_day_kw": 491.38967175571287
+    },
+    {
+      "date": "2024-10-31",
+      "target_kw": 464.1571436675129,
+      "random_forest_kw": 464.84117702581665,
+      "previous_day_kw": 528.7234831069749
+    },
+    {
+      "date": "2024-11-01",
+      "target_kw": 517.5551121618272,
+      "random_forest_kw": 505.8732637844649,
+      "previous_day_kw": 464.1571436675129
+    },
+    {
+      "date": "2024-11-02",
+      "target_kw": 355.82356052900485,
+      "random_forest_kw": 351.04280236407635,
+      "previous_day_kw": 517.5551121618272
+    },
+    {
+      "date": "2024-11-03",
+      "target_kw": 338.77285070440087,
+      "random_forest_kw": 349.1084285958391,
+      "previous_day_kw": 355.82356052900485
+    },
+    {
+      "date": "2024-11-04",
+      "target_kw": 501.12418454014863,
+      "random_forest_kw": 498.7408733314137,
+      "previous_day_kw": 338.77285070440087
+    },
+    {
+      "date": "2024-11-05",
+      "target_kw": 573.896418985419,
+      "random_forest_kw": 557.6022728793487,
+      "previous_day_kw": 501.12418454014863
+    },
+    {
+      "date": "2024-11-06",
+      "target_kw": 471.8683011030637,
+      "random_forest_kw": 501.5541365544466,
+      "previous_day_kw": 573.896418985419
+    },
+    {
+      "date": "2024-11-07",
+      "target_kw": 536.5568342932736,
+      "random_forest_kw": 518.1236007382734,
+      "previous_day_kw": 471.8683011030637
+    },
+    {
+      "date": "2024-11-08",
+      "target_kw": 573.5494741382796,
+      "random_forest_kw": 559.1777177868206,
+      "previous_day_kw": 536.5568342932736
+    },
+    {
+      "date": "2024-11-09",
+      "target_kw": 354.98574194509814,
+      "random_forest_kw": 363.862735850364,
+      "previous_day_kw": 573.5494741382796
+    },
+    {
+      "date": "2024-11-10",
+      "target_kw": 335.7540722056286,
+      "random_forest_kw": 346.7904110586771,
+      "previous_day_kw": 354.98574194509814
+    },
+    {
+      "date": "2024-11-11",
+      "target_kw": 538.0118527948888,
+      "random_forest_kw": 525.1355152748048,
+      "previous_day_kw": 335.7540722056286
+    },
+    {
+      "date": "2024-11-12",
+      "target_kw": 534.2225344066613,
+      "random_forest_kw": 529.0036464903862,
+      "previous_day_kw": 538.0118527948888
+    },
+    {
+      "date": "2024-11-13",
+      "target_kw": 524.0814515096941,
+      "random_forest_kw": 515.422119195732,
+      "previous_day_kw": 534.2225344066613
+    },
+    {
+      "date": "2024-11-14",
+      "target_kw": 586.294864843485,
+      "random_forest_kw": 565.7797710738649,
+      "previous_day_kw": 524.0814515096941
+    },
+    {
+      "date": "2024-11-15",
+      "target_kw": 548.6535141819901,
+      "random_forest_kw": 560.9550794599869,
+      "previous_day_kw": 586.294864843485
+    },
+    {
+      "date": "2024-11-16",
+      "target_kw": 382.77586276837997,
+      "random_forest_kw": 385.40759706300565,
+      "previous_day_kw": 548.6535141819901
+    },
+    {
+      "date": "2024-11-17",
+      "target_kw": 406.5858363211798,
+      "random_forest_kw": 402.96878056184886,
+      "previous_day_kw": 382.77586276837997
+    },
+    {
+      "date": "2024-11-18",
+      "target_kw": 512.6215630088972,
+      "random_forest_kw": 512.5284498325019,
+      "previous_day_kw": 406.5858363211798
+    },
+    {
+      "date": "2024-11-19",
+      "target_kw": 506.5177098313697,
+      "random_forest_kw": 518.8674077345328,
+      "previous_day_kw": 512.6215630088972
+    },
+    {
+      "date": "2024-11-20",
+      "target_kw": 539.9447161475965,
+      "random_forest_kw": 533.6477731877952,
+      "previous_day_kw": 506.5177098313697
+    },
+    {
+      "date": "2024-11-21",
+      "target_kw": 527.3341407411466,
+      "random_forest_kw": 532.6087714982539,
+      "previous_day_kw": 539.9447161475965
+    },
+    {
+      "date": "2024-11-22",
+      "target_kw": 513.4079531044227,
+      "random_forest_kw": 522.2256367535836,
+      "previous_day_kw": 527.3341407411466
+    },
+    {
+      "date": "2024-11-23",
+      "target_kw": 391.67383056110634,
+      "random_forest_kw": 395.57404431092647,
+      "previous_day_kw": 513.4079531044227
+    },
+    {
+      "date": "2024-11-24",
+      "target_kw": 370.6079442635856,
+      "random_forest_kw": 385.72069280616694,
+      "previous_day_kw": 391.67383056110634
+    },
+    {
+      "date": "2024-11-25",
+      "target_kw": 532.8128062024447,
+      "random_forest_kw": 521.3965150559392,
+      "previous_day_kw": 370.6079442635856
+    },
+    {
+      "date": "2024-11-26",
+      "target_kw": 534.1454489746037,
+      "random_forest_kw": 532.617751760993,
+      "previous_day_kw": 532.8128062024447
+    },
+    {
+      "date": "2024-11-27",
+      "target_kw": 527.4613175814385,
+      "random_forest_kw": 534.6333112556036,
+      "previous_day_kw": 534.1454489746037
+    },
+    {
+      "date": "2024-11-28",
+      "target_kw": 576.1940586036578,
+      "random_forest_kw": 556.764172717678,
+      "previous_day_kw": 527.4613175814385
+    },
+    {
+      "date": "2024-11-29",
+      "target_kw": 560.7540344068866,
+      "random_forest_kw": 555.4996794713461,
+      "previous_day_kw": 576.1940586036578
+    },
+    {
+      "date": "2024-11-30",
+      "target_kw": 387.7299307393145,
+      "random_forest_kw": 394.6466391676494,
+      "previous_day_kw": 560.7540344068866
+    },
+    {
+      "date": "2024-12-01",
+      "target_kw": 392.0542274903678,
+      "random_forest_kw": 383.74566780847414,
+      "previous_day_kw": 387.7299307393145
+    },
+    {
+      "date": "2024-12-02",
+      "target_kw": 565.1664261721606,
+      "random_forest_kw": 545.516182466282,
+      "previous_day_kw": 392.0542274903678
+    },
+    {
+      "date": "2024-12-03",
+      "target_kw": 542.452823323832,
+      "random_forest_kw": 543.854111457727,
+      "previous_day_kw": 565.1664261721606
+    },
+    {
+      "date": "2024-12-04",
+      "target_kw": 556.1578933606426,
+      "random_forest_kw": 549.9948456374251,
+      "previous_day_kw": 542.452823323832
+    },
+    {
+      "date": "2024-12-05",
+      "target_kw": 578.8606588080906,
+      "random_forest_kw": 569.6911603278639,
+      "previous_day_kw": 556.1578933606426
+    },
+    {
+      "date": "2024-12-06",
+      "target_kw": 534.3836134073033,
+      "random_forest_kw": 542.7951616179726,
+      "previous_day_kw": 578.8606588080906
+    },
+    {
+      "date": "2024-12-07",
+      "target_kw": 400.9678172846673,
+      "random_forest_kw": 409.08733667355585,
+      "previous_day_kw": 534.3836134073033
+    },
+    {
+      "date": "2024-12-08",
+      "target_kw": 410.0567837871469,
+      "random_forest_kw": 419.93611869621753,
+      "previous_day_kw": 400.9678172846673
+    },
+    {
+      "date": "2024-12-09",
+      "target_kw": 512.5981571221942,
+      "random_forest_kw": 532.9568816230285,
+      "previous_day_kw": 410.0567837871469
+    },
+    {
+      "date": "2024-12-10",
+      "target_kw": 596.2921022592085,
+      "random_forest_kw": 574.1573485267633,
+      "previous_day_kw": 512.5981571221942
+    },
+    {
+      "date": "2024-12-11",
+      "target_kw": 537.7069315278999,
+      "random_forest_kw": 547.3952845340399,
+      "previous_day_kw": 596.2921022592085
+    },
+    {
+      "date": "2024-12-12",
+      "target_kw": 541.6515247281112,
+      "random_forest_kw": 544.8286424581089,
+      "previous_day_kw": 537.7069315278999
+    },
+    {
+      "date": "2024-12-13",
+      "target_kw": 586.2503874784986,
+      "random_forest_kw": 575.0094774138363,
+      "previous_day_kw": 541.6515247281112
+    },
+    {
+      "date": "2024-12-14",
+      "target_kw": 376.3631967718075,
+      "random_forest_kw": 386.55372107558395,
+      "previous_day_kw": 586.2503874784986
+    },
+    {
+      "date": "2024-12-15",
+      "target_kw": 402.9050591889781,
+      "random_forest_kw": 402.3249124789734,
+      "previous_day_kw": 376.3631967718075
+    },
+    {
+      "date": "2024-12-16",
+      "target_kw": 533.1058044776613,
+      "random_forest_kw": 525.5747292802737,
+      "previous_day_kw": 402.9050591889781
+    },
+    {
+      "date": "2024-12-17",
+      "target_kw": 563.928375059748,
+      "random_forest_kw": 573.028534856005,
+      "previous_day_kw": 533.1058044776613
+    },
+    {
+      "date": "2024-12-18",
+      "target_kw": 576.1281260479428,
+      "random_forest_kw": 557.9502855347936,
+      "previous_day_kw": 563.928375059748
+    },
+    {
+      "date": "2024-12-19",
+      "target_kw": 547.3973505156108,
+      "random_forest_kw": 547.4277173715401,
+      "previous_day_kw": 576.1281260479428
+    },
+    {
+      "date": "2024-12-20",
+      "target_kw": 537.8921799071721,
+      "random_forest_kw": 548.7460786339675,
+      "previous_day_kw": 547.3973505156108
+    },
+    {
+      "date": "2024-12-21",
+      "target_kw": 398.19120305797327,
+      "random_forest_kw": 391.21438371244517,
+      "previous_day_kw": 537.8921799071721
+    },
+    {
+      "date": "2024-12-22",
+      "target_kw": 419.47529625047287,
+      "random_forest_kw": 429.6492688375822,
+      "previous_day_kw": 398.19120305797327
+    },
+    {
+      "date": "2024-12-23",
+      "target_kw": 528.6927486144294,
+      "random_forest_kw": 523.6162510106597,
+      "previous_day_kw": 419.47529625047287
+    },
+    {
+      "date": "2024-12-24",
+      "target_kw": 560.5571506686373,
+      "random_forest_kw": 553.4520006421039,
+      "previous_day_kw": 528.6927486144294
+    },
+    {
+      "date": "2024-12-25",
+      "target_kw": 562.3862542237425,
+      "random_forest_kw": 567.4314287772369,
+      "previous_day_kw": 560.5571506686373
+    },
+    {
+      "date": "2024-12-26",
+      "target_kw": 521.9400079906985,
+      "random_forest_kw": 533.2309050438206,
+      "previous_day_kw": 562.3862542237425
+    },
+    {
+      "date": "2024-12-27",
+      "target_kw": 574.9230503607222,
+      "random_forest_kw": 573.0521090137477,
+      "previous_day_kw": 521.9400079906985
+    },
+    {
+      "date": "2024-12-28",
+      "target_kw": 385.83007545147194,
+      "random_forest_kw": 387.3083983425888,
+      "previous_day_kw": 574.9230503607222
+    },
+    {
+      "date": "2024-12-29",
+      "target_kw": 415.6741130573892,
+      "random_forest_kw": 413.41795732591646,
+      "previous_day_kw": 385.83007545147194
+    },
+    {
+      "date": "2024-12-30",
+      "target_kw": 551.123932856367,
+      "random_forest_kw": 537.9688457275251,
+      "previous_day_kw": 415.6741130573892
+    },
+    {
+      "date": "2024-12-31",
+      "target_kw": 561.6252939986663,
+      "random_forest_kw": 565.0303772988883,
+      "previous_day_kw": 551.123932856367
+    }
+  ],
+  "monthly_dispatch": [
+    {
+      "month": "2024-01",
+      "baseline_cost_eur": 83969.69872212576,
+      "energy_cost_eur": 83943.72069672178,
+      "wear_cost_eur": 1.938818931328604,
+      "operating_savings_eur": 24.03920647265051
+    },
+    {
+      "month": "2024-02",
+      "baseline_cost_eur": 72067.16463755339,
+      "energy_cost_eur": 71978.0450465669,
+      "wear_cost_eur": 6.651265732090715,
+      "operating_savings_eur": 82.468325254399
+    },
+    {
+      "month": "2024-03",
+      "baseline_cost_eur": 63753.823647180856,
+      "energy_cost_eur": 63119.91414614469,
+      "wear_cost_eur": 47.3105912495459,
+      "operating_savings_eur": 586.5989097866135
+    },
+    {
+      "month": "2024-04",
+      "baseline_cost_eur": 51736.84904000911,
+      "energy_cost_eur": 49630.14197936411,
+      "wear_cost_eur": 157.2299460187814,
+      "operating_savings_eur": 1949.4771146262203
+    },
+    {
+      "month": "2024-05",
+      "baseline_cost_eur": 39044.1194463584,
+      "energy_cost_eur": 33815.17638414941,
+      "wear_cost_eur": 390.25190106624933,
+      "operating_savings_eur": 4838.691161142748
+    },
+    {
+      "month": "2024-06",
+      "baseline_cost_eur": 36004.107281899895,
+      "energy_cost_eur": 31557.387672582227,
+      "wear_cost_eur": 331.8721891593297,
+      "operating_savings_eur": 4114.847420158338
+    },
+    {
+      "month": "2024-07",
+      "baseline_cost_eur": 39264.09841403188,
+      "energy_cost_eur": 34900.72811497795,
+      "wear_cost_eur": 325.6515770019578,
+      "operating_savings_eur": 4037.7187220519754
+    },
+    {
+      "month": "2024-08",
+      "baseline_cost_eur": 49867.99600961609,
+      "energy_cost_eur": 47212.96249503113,
+      "wear_cost_eur": 198.1532145472748,
+      "operating_savings_eur": 2456.8803000376793
+    },
+    {
+      "month": "2024-09",
+      "baseline_cost_eur": 57170.265674936425,
+      "energy_cost_eur": 56317.2263670186,
+      "wear_cost_eur": 63.66491423575242,
+      "operating_savings_eur": 789.3743936820716
+    },
+    {
+      "month": "2024-10",
+      "baseline_cost_eur": 73390.65202731152,
+      "energy_cost_eur": 73272.26115004282,
+      "wear_cost_eur": 8.835870724417015,
+      "operating_savings_eur": 109.55500654429521
+    },
+    {
+      "month": "2024-11",
+      "baseline_cost_eur": 78051.78173244157,
+      "energy_cost_eur": 78031.15635883965,
+      "wear_cost_eur": 1.5393342713022289,
+      "operating_savings_eur": 19.086039330606038
+    },
+    {
+      "month": "2024-12",
+      "baseline_cost_eur": 84414.5197634213,
+      "energy_cost_eur": 84411.78759451689,
+      "wear_cost_eur": 0.20391006295024472,
+      "operating_savings_eur": 2.528258841455094
+    }
+  ],
+  "dispatch_week": [
+    {
+      "timestamp": "2024-05-26T20:00:00Z",
+      "demand_kw": 473.51927176426994,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 473.51927176426994,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 160.9965523998518,
+      "energy_cost_eur": 160.9965523998518,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-26T21:00:00Z",
+      "demand_kw": 382.3786447389556,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 382.3786447389556,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 130.00873921124492,
+      "energy_cost_eur": 130.00873921124492,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-26T22:00:00Z",
+      "demand_kw": 316.13654621901014,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 316.13654621901014,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 66.38867470599213,
+      "energy_cost_eur": 66.38867470599213,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-26T23:00:00Z",
+      "demand_kw": 389.39016406804444,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 389.39016406804444,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 81.77193445428934,
+      "energy_cost_eur": 81.77193445428934,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T00:00:00Z",
+      "demand_kw": 476.3690538187814,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 476.3690538187814,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 57.16428645825377,
+      "energy_cost_eur": 57.16428645825377,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T01:00:00Z",
+      "demand_kw": 436.18439969512406,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 436.18439969512406,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 52.34212796341488,
+      "energy_cost_eur": 52.34212796341488,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T02:00:00Z",
+      "demand_kw": 480.7361910847598,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 480.7361910847598,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 57.688342930171174,
+      "energy_cost_eur": 57.688342930171174,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T03:00:00Z",
+      "demand_kw": 433.85569069059386,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 433.85569069059386,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 52.062682882871265,
+      "energy_cost_eur": 52.062682882871265,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T04:00:00Z",
+      "demand_kw": 394.28211555888777,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 394.28211555888777,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 47.31385386706653,
+      "energy_cost_eur": 47.31385386706653,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T05:00:00Z",
+      "demand_kw": 381.3838422689629,
+      "solar_kw": 135.48834328529708,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 245.89549898366582,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 29.507459878039896,
+      "energy_cost_eur": 29.507459878039896,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T06:00:00Z",
+      "demand_kw": 381.0779762434386,
+      "solar_kw": 315.66455108325823,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 65.4134251601804,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 13.736819283637882,
+      "energy_cost_eur": 13.736819283637882,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T07:00:00Z",
+      "demand_kw": 423.5178202659964,
+      "solar_kw": 437.4599997727206,
+      "charge_kw": 13.942179506724187,
+      "discharge_kw": 0.0,
+      "soc_kwh": 13.245070531387977,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.69710897533621,
+      "baseline_cost_eur": -0.9062416679370722,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -0.9062416679370722
+    },
+    {
+      "timestamp": "2024-05-27T08:00:00Z",
+      "demand_kw": 698.4521691819346,
+      "solar_kw": 607.1390055443574,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 13.245070531387977,
+      "grid_import_kw": 91.31316363757719,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 19.175764363891208,
+      "energy_cost_eur": 19.175764363891208,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T09:00:00Z",
+      "demand_kw": 694.8490535848888,
+      "solar_kw": 761.3409218443492,
+      "charge_kw": 66.49186825946038,
+      "discharge_kw": 0.0,
+      "soc_kwh": 76.41234537787533,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 3.3245934129730217,
+      "baseline_cost_eur": -4.321971436864924,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -4.321971436864924
+    },
+    {
+      "timestamp": "2024-05-27T10:00:00Z",
+      "demand_kw": 709.9558761487472,
+      "solar_kw": 852.0416643917374,
+      "charge_kw": 142.08578824299025,
+      "discharge_kw": 0.0,
+      "soc_kwh": 211.39384420871608,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 7.104289412149519,
+      "baseline_cost_eur": -9.235576235794367,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -9.235576235794367
+    },
+    {
+      "timestamp": "2024-05-27T11:00:00Z",
+      "demand_kw": 740.8698229478323,
+      "solar_kw": 945.2514140396796,
+      "charge_kw": 204.38159109184733,
+      "discharge_kw": 0.0,
+      "soc_kwh": 405.556355745971,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 10.219079554592376,
+      "baseline_cost_eur": -13.284803420970077,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -13.284803420970077
+    },
+    {
+      "timestamp": "2024-05-27T12:00:00Z",
+      "demand_kw": 696.1573035545551,
+      "solar_kw": 977.0673258388471,
+      "charge_kw": 280.9100222842919,
+      "discharge_kw": 0.0,
+      "soc_kwh": 672.4208769160483,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.04550111421461,
+      "baseline_cost_eur": -18.259151448478974,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -18.259151448478974
+    },
+    {
+      "timestamp": "2024-05-27T13:00:00Z",
+      "demand_kw": 691.9995438096237,
+      "solar_kw": 1054.2860921883866,
+      "charge_kw": 344.82012956205443,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 17.46641881670854,
+      "loss_kwh": 17.241006478102737,
+      "baseline_cost_eur": -23.548625644619595,
+      "energy_cost_eur": -1.135317223086055,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -22.41330842153354
+    },
+    {
+      "timestamp": "2024-05-27T14:00:00Z",
+      "demand_kw": 704.1630066697122,
+      "solar_kw": 874.5714407714613,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 170.4084341017491,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -11.076548216613691,
+      "energy_cost_eur": -11.076548216613691,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T15:00:00Z",
+      "demand_kw": 762.330006873664,
+      "solar_kw": 711.524796168544,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 50.80521070512009,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 10.669094248075218,
+      "energy_cost_eur": 10.669094248075218,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T16:00:00Z",
+      "demand_kw": 758.7239718705077,
+      "solar_kw": 702.8876046946895,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 55.83636717581828,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 11.72563710692184,
+      "energy_cost_eur": 11.72563710692184,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T17:00:00Z",
+      "demand_kw": 812.3850036445034,
+      "solar_kw": 535.8433091893395,
+      "charge_kw": 0.0,
+      "discharge_kw": 276.5416944551639,
+      "soc_kwh": 708.9034795208801,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.554826023955979,
+      "baseline_cost_eur": 94.02417611475573,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 5.5308338891032784,
+      "operating_savings_eur": 88.49334222565246
+    },
+    {
+      "timestamp": "2024-05-27T18:00:00Z",
+      "demand_kw": 605.1060292317428,
+      "solar_kw": 317.08914680634433,
+      "charge_kw": 0.0,
+      "discharge_kw": 288.0168824253985,
+      "soc_kwh": 405.7278138099343,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 15.15878328554727,
+      "baseline_cost_eur": 97.92574002463549,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 5.76033764850797,
+      "operating_savings_eur": 92.16540237612752
+    },
+    {
+      "timestamp": "2024-05-27T19:00:00Z",
+      "demand_kw": 664.3567441398973,
+      "solar_kw": 117.95009337720212,
+      "charge_kw": 0.0,
+      "discharge_kw": 385.44142311943756,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 160.96522764325755,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 20.28639069049669,
+      "baseline_cost_eur": 185.77826125931634,
+      "energy_cost_eur": 54.72817739870757,
+      "wear_cost_eur": 7.708828462388752,
+      "operating_savings_eur": 123.34125539822001
+    },
+    {
+      "timestamp": "2024-05-27T20:00:00Z",
+      "demand_kw": 575.9016731930672,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 575.9016731930672,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 195.80656888564283,
+      "energy_cost_eur": 195.80656888564283,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T21:00:00Z",
+      "demand_kw": 530.7513696062433,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 530.7513696062433,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 180.45546566612273,
+      "energy_cost_eur": 180.45546566612273,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T22:00:00Z",
+      "demand_kw": 433.05967892701364,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 433.05967892701364,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 90.94253257467285,
+      "energy_cost_eur": 90.94253257467285,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-27T23:00:00Z",
+      "demand_kw": 454.6528889574286,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 454.6528889574286,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 95.47710668106001,
+      "energy_cost_eur": 95.47710668106001,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T00:00:00Z",
+      "demand_kw": 425.0762536252984,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 425.0762536252984,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 51.00915043503581,
+      "energy_cost_eur": 51.00915043503581,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T01:00:00Z",
+      "demand_kw": 451.64434839598243,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 451.64434839598243,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 54.19732180751789,
+      "energy_cost_eur": 54.19732180751789,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T02:00:00Z",
+      "demand_kw": 410.5533047336402,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 410.5533047336402,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 49.26639656803682,
+      "energy_cost_eur": 49.26639656803682,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T03:00:00Z",
+      "demand_kw": 429.51535032887625,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 429.51535032887625,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 51.541842039465145,
+      "energy_cost_eur": 51.541842039465145,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T04:00:00Z",
+      "demand_kw": 442.4598387315982,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 442.4598387315982,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 53.095180647791786,
+      "energy_cost_eur": 53.095180647791786,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T05:00:00Z",
+      "demand_kw": 483.8457666821669,
+      "solar_kw": 135.6633320979174,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 348.18243458424956,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 41.78189215010995,
+      "energy_cost_eur": 41.78189215010995,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T06:00:00Z",
+      "demand_kw": 473.1331017145314,
+      "solar_kw": 348.62462641307235,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 124.50847530145904,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 26.1467798133064,
+      "energy_cost_eur": 26.1467798133064,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T07:00:00Z",
+      "demand_kw": 463.60672128058405,
+      "solar_kw": 543.7406486500819,
+      "charge_kw": 80.13392736949783,
+      "discharge_kw": 0.0,
+      "soc_kwh": 76.12723100102293,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 4.006696368474895,
+      "baseline_cost_eur": -5.208705279017359,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -5.208705279017359
+    },
+    {
+      "timestamp": "2024-05-28T08:00:00Z",
+      "demand_kw": 736.3602506759534,
+      "solar_kw": 726.0339554773009,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 76.12723100102293,
+      "grid_import_kw": 10.326295198652474,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 2.1685219917170193,
+      "energy_cost_eur": 2.1685219917170193,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T09:00:00Z",
+      "demand_kw": 699.2903883496012,
+      "solar_kw": 901.7246220617051,
+      "charge_kw": 202.43423371210383,
+      "discharge_kw": 0.0,
+      "soc_kwh": 268.4397530275216,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 10.1217116856052,
+      "baseline_cost_eur": -13.15822519128675,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -13.15822519128675
+    },
+    {
+      "timestamp": "2024-05-28T10:00:00Z",
+      "demand_kw": 736.3465306297782,
+      "solar_kw": 1044.9326405978904,
+      "charge_kw": 308.5861099681123,
+      "discharge_kw": 0.0,
+      "soc_kwh": 561.5965574972282,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 15.429305498405627,
+      "baseline_cost_eur": -20.0580971479273,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -20.0580971479273
+    },
+    {
+      "timestamp": "2024-05-28T11:00:00Z",
+      "demand_kw": 688.4225701405234,
+      "solar_kw": 979.5247530848575,
+      "charge_kw": 291.1021829443341,
+      "discharge_kw": 0.0,
+      "soc_kwh": 838.1436312943456,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.555109147216719,
+      "baseline_cost_eur": -18.921641891381718,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -18.921641891381718
+    },
+    {
+      "timestamp": "2024-05-28T12:00:00Z",
+      "demand_kw": 706.7829686176386,
+      "solar_kw": 1041.9820318731895,
+      "charge_kw": 170.37512495332044,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 164.82393830223043,
+      "loss_kwh": 8.51875624766603,
+      "baseline_cost_eur": -21.787939111610807,
+      "energy_cost_eur": -10.713555989644979,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -11.074383121965829
+    },
+    {
+      "timestamp": "2024-05-28T13:00:00Z",
+      "demand_kw": 771.5203409562664,
+      "solar_kw": 1002.6166946274602,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 231.0963536711938,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -15.021262988627598,
+      "energy_cost_eur": -15.021262988627598,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T14:00:00Z",
+      "demand_kw": 736.4911669230155,
+      "solar_kw": 929.2540142338852,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 192.7628473108697,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -12.52958507520653,
+      "energy_cost_eur": -12.52958507520653,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T15:00:00Z",
+      "demand_kw": 739.8452138190211,
+      "solar_kw": 765.9619001060242,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 26.116686287003176,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -1.6975846086552064,
+      "energy_cost_eur": -1.6975846086552064,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T16:00:00Z",
+      "demand_kw": 772.067695891104,
+      "solar_kw": 717.0317381278911,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 55.03595776321288,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 11.557551130274703,
+      "energy_cost_eur": 11.557551130274703,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T17:00:00Z",
+      "demand_kw": 800.145868612589,
+      "solar_kw": 559.8236573756736,
+      "charge_kw": 0.0,
+      "discharge_kw": 240.32221123691534,
+      "soc_kwh": 747.0292513295628,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 12.648537433521845,
+      "baseline_cost_eur": 81.70955182055123,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 4.806444224738307,
+      "operating_savings_eur": 76.90310759581291
+    },
+    {
+      "timestamp": "2024-05-28T18:00:00Z",
+      "demand_kw": 486.14349110188937,
+      "solar_kw": 342.36179296852765,
+      "charge_kw": 0.0,
+      "discharge_kw": 143.78169813336172,
+      "soc_kwh": 595.6800953997084,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 7.567457796492714,
+      "baseline_cost_eur": 48.88577736534299,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 2.8756339626672345,
+      "operating_savings_eur": 46.01014340267575
+    },
+    {
+      "timestamp": "2024-05-28T19:00:00Z",
+      "demand_kw": 532.6320155306381,
+      "solar_kw": 134.80997022039514,
+      "charge_kw": 0.0,
+      "discharge_kw": 397.82204531024297,
+      "soc_kwh": 176.92004770471578,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 20.938002384749606,
+      "baseline_cost_eur": 135.25949540548262,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 7.956440906204859,
+      "operating_savings_eur": 127.30305449927776
+    },
+    {
+      "timestamp": "2024-05-28T20:00:00Z",
+      "demand_kw": 574.8813070825621,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 168.07404531947998,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 406.8072617630821,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 8.846002385235778,
+      "baseline_cost_eur": 195.45964440807114,
+      "energy_cost_eur": 138.31446899944794,
+      "wear_cost_eur": 3.3614809063895996,
+      "operating_savings_eur": 53.7836945022336
+    },
+    {
+      "timestamp": "2024-05-28T21:00:00Z",
+      "demand_kw": 483.69091564976196,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 483.69091564976196,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 164.45491132091908,
+      "energy_cost_eur": 164.45491132091908,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T22:00:00Z",
+      "demand_kw": 467.2422045911537,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 467.2422045911537,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 98.12086296414228,
+      "energy_cost_eur": 98.12086296414228,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-28T23:00:00Z",
+      "demand_kw": 403.30261562897135,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 403.30261562897135,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 84.69354928208398,
+      "energy_cost_eur": 84.69354928208398,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T00:00:00Z",
+      "demand_kw": 399.8277461699167,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 399.8277461699167,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 47.97932954039,
+      "energy_cost_eur": 47.97932954039,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T01:00:00Z",
+      "demand_kw": 422.6881005977675,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 422.6881005977675,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 50.7225720717321,
+      "energy_cost_eur": 50.7225720717321,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T02:00:00Z",
+      "demand_kw": 452.3880099981111,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 452.3880099981111,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 54.28656119977333,
+      "energy_cost_eur": 54.28656119977333,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T03:00:00Z",
+      "demand_kw": 458.8029454560872,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 458.8029454560872,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 55.056353454730456,
+      "energy_cost_eur": 55.056353454730456,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T04:00:00Z",
+      "demand_kw": 399.3160781452328,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 399.3160781452328,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 47.91792937742793,
+      "energy_cost_eur": 47.91792937742793,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T05:00:00Z",
+      "demand_kw": 432.6389732644225,
+      "solar_kw": 101.37775576990848,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 331.26121749451397,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 39.751346099341674,
+      "energy_cost_eur": 39.751346099341674,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T06:00:00Z",
+      "demand_kw": 377.21075090319096,
+      "solar_kw": 322.0201956320373,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 55.19055527115364,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 11.590016606942264,
+      "energy_cost_eur": 11.590016606942264,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T07:00:00Z",
+      "demand_kw": 424.629610387812,
+      "solar_kw": 510.5762021267858,
+      "charge_kw": 85.94659173897378,
+      "discharge_kw": 0.0,
+      "soc_kwh": 81.64926215202509,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 4.297329586948693,
+      "baseline_cost_eur": -5.586528463033296,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -5.586528463033296
+    },
+    {
+      "timestamp": "2024-05-29T08:00:00Z",
+      "demand_kw": 743.3306728304906,
+      "solar_kw": 631.1564300782376,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 81.64926215202509,
+      "grid_import_kw": 112.17424275225301,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 23.55659097797313,
+      "energy_cost_eur": 23.55659097797313,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T09:00:00Z",
+      "demand_kw": 710.6793861808997,
+      "solar_kw": 735.0186619717069,
+      "charge_kw": 24.339275790807278,
+      "discharge_kw": 0.0,
+      "soc_kwh": 104.771574153292,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 1.2169637895403649,
+      "baseline_cost_eur": -1.5820529264024732,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -1.5820529264024732
+    },
+    {
+      "timestamp": "2024-05-29T10:00:00Z",
+      "demand_kw": 754.9313492146568,
+      "solar_kw": 829.7394387799919,
+      "charge_kw": 74.80808956533508,
+      "discharge_kw": 0.0,
+      "soc_kwh": 175.83925924036032,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 3.740404478266757,
+      "baseline_cost_eur": -4.862525821746781,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -4.862525821746781
+    },
+    {
+      "timestamp": "2024-05-29T11:00:00Z",
+      "demand_kw": 739.6486268817002,
+      "solar_kw": 904.3967556707972,
+      "charge_kw": 164.748128789097,
+      "discharge_kw": 0.0,
+      "soc_kwh": 332.34998159000247,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 8.237406439454857,
+      "baseline_cost_eur": -10.708628371291304,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -10.708628371291304
+    },
+    {
+      "timestamp": "2024-05-29T12:00:00Z",
+      "demand_kw": 720.8364232954848,
+      "solar_kw": 925.7617350895604,
+      "charge_kw": 204.92531179407558,
+      "discharge_kw": 0.0,
+      "soc_kwh": 527.0290277943743,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 10.246265589703789,
+      "baseline_cost_eur": -13.320145266614913,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -13.320145266614913
+    },
+    {
+      "timestamp": "2024-05-29T13:00:00Z",
+      "demand_kw": 706.3540507539441,
+      "solar_kw": 893.1540723723745,
+      "charge_kw": 186.80002161843038,
+      "discharge_kw": 0.0,
+      "soc_kwh": 704.4890483318832,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 9.340001080921526,
+      "baseline_cost_eur": -12.142001405197975,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -12.142001405197975
+    },
+    {
+      "timestamp": "2024-05-29T14:00:00Z",
+      "demand_kw": 701.9092638050371,
+      "solar_kw": 845.7150073419558,
+      "charge_kw": 143.80574353691873,
+      "discharge_kw": 0.0,
+      "soc_kwh": 841.104504691956,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 7.190287176845943,
+      "baseline_cost_eur": -9.347373329899717,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -9.347373329899717
+    },
+    {
+      "timestamp": "2024-05-29T15:00:00Z",
+      "demand_kw": 685.6579211370578,
+      "solar_kw": 841.0928887574036,
+      "charge_kw": 155.4349676203458,
+      "discharge_kw": 0.0,
+      "soc_kwh": 988.7677239312845,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 7.7717483810172965,
+      "baseline_cost_eur": -10.103272895322476,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -10.103272895322476
+    },
+    {
+      "timestamp": "2024-05-29T16:00:00Z",
+      "demand_kw": 718.9719797189372,
+      "solar_kw": 585.5596795453001,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 988.7677239312845,
+      "grid_import_kw": 133.41230017363705,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 28.01658303646378,
+      "energy_cost_eur": 28.01658303646378,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T17:00:00Z",
+      "demand_kw": 834.718334786767,
+      "solar_kw": 424.66289939986586,
+      "charge_kw": 0.0,
+      "discharge_kw": 410.0554353869011,
+      "soc_kwh": 557.1304235240202,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 21.581865020363193,
+      "baseline_cost_eur": 139.4188480315464,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 8.201108707738022,
+      "operating_savings_eur": 131.21773932380836
+    },
+    {
+      "timestamp": "2024-05-29T18:00:00Z",
+      "demand_kw": 603.2998510351117,
+      "solar_kw": 340.6248678453104,
+      "charge_kw": 0.0,
+      "discharge_kw": 262.6749831898013,
+      "soc_kwh": 280.6304412189662,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 13.824999115252686,
+      "baseline_cost_eur": 89.30949428453245,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 5.253499663796027,
+      "operating_savings_eur": 84.05599462073643
+    },
+    {
+      "timestamp": "2024-05-29T19:00:00Z",
+      "demand_kw": 538.2312966661651,
+      "solar_kw": 121.38812990050613,
+      "charge_kw": 0.0,
+      "discharge_kw": 266.5989191580179,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 150.2442476076411,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.031522060948296,
+      "baseline_cost_eur": 141.72667670032408,
+      "energy_cost_eur": 51.08304418659798,
+      "wear_cost_eur": 5.331978383160358,
+      "operating_savings_eur": 85.31165413056573
+    },
+    {
+      "timestamp": "2024-05-29T20:00:00Z",
+      "demand_kw": 557.0437268273715,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 557.0437268273715,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 189.39486712130633,
+      "energy_cost_eur": 189.39486712130633,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T21:00:00Z",
+      "demand_kw": 462.4972764577703,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 462.4972764577703,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 157.2490739956419,
+      "energy_cost_eur": 157.2490739956419,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T22:00:00Z",
+      "demand_kw": 439.15993950869415,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 439.15993950869415,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 92.22358729682577,
+      "energy_cost_eur": 92.22358729682577,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-29T23:00:00Z",
+      "demand_kw": 450.62739962121657,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 450.62739962121657,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 94.63175392045548,
+      "energy_cost_eur": 94.63175392045548,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T00:00:00Z",
+      "demand_kw": 405.9699704677011,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 405.9699704677011,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 48.71639645612413,
+      "energy_cost_eur": 48.71639645612413,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T01:00:00Z",
+      "demand_kw": 361.2500827848989,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 361.2500827848989,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 43.35000993418787,
+      "energy_cost_eur": 43.35000993418787,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T02:00:00Z",
+      "demand_kw": 477.57194815399674,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 477.57194815399674,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 57.30863377847961,
+      "energy_cost_eur": 57.30863377847961,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T03:00:00Z",
+      "demand_kw": 420.9955831775231,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 420.9955831775231,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 50.51946998130277,
+      "energy_cost_eur": 50.51946998130277,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T04:00:00Z",
+      "demand_kw": 387.22729805710486,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 387.22729805710486,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 46.46727576685258,
+      "energy_cost_eur": 46.46727576685258,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T05:00:00Z",
+      "demand_kw": 426.6653702434934,
+      "solar_kw": 114.23359637056191,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 312.43177387293144,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 37.49181286475177,
+      "energy_cost_eur": 37.49181286475177,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T06:00:00Z",
+      "demand_kw": 419.9805255042058,
+      "solar_kw": 306.7591410300868,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 113.22138447411896,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 23.77649073956498,
+      "energy_cost_eur": 23.77649073956498,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T07:00:00Z",
+      "demand_kw": 436.0666958029123,
+      "solar_kw": 471.36135710653883,
+      "charge_kw": 35.294661303626526,
+      "discharge_kw": 0.0,
+      "soc_kwh": 33.5299282384452,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 1.7647330651813278,
+      "baseline_cost_eur": -2.2941529847357245,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -2.2941529847357245
+    },
+    {
+      "timestamp": "2024-05-30T08:00:00Z",
+      "demand_kw": 701.6929517585929,
+      "solar_kw": 624.2151001137261,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 33.5299282384452,
+      "grid_import_kw": 77.47785164486686,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 16.27034884542204,
+      "energy_cost_eur": 16.27034884542204,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T09:00:00Z",
+      "demand_kw": 722.6249802525334,
+      "solar_kw": 715.8570283928238,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 33.5299282384452,
+      "grid_import_kw": 6.767951859709569,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 1.4212698905390095,
+      "energy_cost_eur": 1.4212698905390095,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T10:00:00Z",
+      "demand_kw": 742.769514622978,
+      "solar_kw": 830.0397939059166,
+      "charge_kw": 87.27027928293853,
+      "discharge_kw": 0.0,
+      "soc_kwh": 116.4366935572368,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 4.3635139641469305,
+      "baseline_cost_eur": -5.672568153391005,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -5.672568153391005
+    },
+    {
+      "timestamp": "2024-05-30T11:00:00Z",
+      "demand_kw": 670.4291227027489,
+      "solar_kw": 792.7011270741992,
+      "charge_kw": 122.2720043714503,
+      "discharge_kw": 0.0,
+      "soc_kwh": 232.59509771011457,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 6.11360021857252,
+      "baseline_cost_eur": -7.947680284144269,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -7.947680284144269
+    },
+    {
+      "timestamp": "2024-05-30T12:00:00Z",
+      "demand_kw": 690.6737140005777,
+      "solar_kw": 794.8525777506565,
+      "charge_kw": 104.17886375007879,
+      "discharge_kw": 0.0,
+      "soc_kwh": 331.56501827268943,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 5.2089431875039445,
+      "baseline_cost_eur": -6.771626143755122,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -6.771626143755122
+    },
+    {
+      "timestamp": "2024-05-30T13:00:00Z",
+      "demand_kw": 740.9447924842789,
+      "solar_kw": 852.4150466968201,
+      "charge_kw": 111.47025421254125,
+      "discharge_kw": 0.0,
+      "soc_kwh": 437.4617597746036,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 5.573512710627067,
+      "baseline_cost_eur": -7.245566523815182,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -7.245566523815182
+    },
+    {
+      "timestamp": "2024-05-30T14:00:00Z",
+      "demand_kw": 701.1072989455309,
+      "solar_kw": 760.6115101029136,
+      "charge_kw": 59.504211157382656,
+      "discharge_kw": 0.0,
+      "soc_kwh": 493.99076037411714,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 2.9752105578691355,
+      "baseline_cost_eur": -3.8677737252298727,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -3.8677737252298727
+    },
+    {
+      "timestamp": "2024-05-30T15:00:00Z",
+      "demand_kw": 729.4431470067673,
+      "solar_kw": 798.783372756289,
+      "charge_kw": 69.34022574952178,
+      "discharge_kw": 0.0,
+      "soc_kwh": 559.8639748361628,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 3.467011287476092,
+      "baseline_cost_eur": -4.507114673718916,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -4.507114673718916
+    },
+    {
+      "timestamp": "2024-05-30T16:00:00Z",
+      "demand_kw": 745.1082596220157,
+      "solar_kw": 615.7826437410783,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 559.8639748361628,
+      "grid_import_kw": 129.32561588093733,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 27.15837933499684,
+      "energy_cost_eur": 27.15837933499684,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T17:00:00Z",
+      "demand_kw": 789.5674309711573,
+      "solar_kw": 427.62074144716695,
+      "charge_kw": 0.0,
+      "discharge_kw": 361.9466895239903,
+      "soc_kwh": 178.86745954775193,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 19.049825764420522,
+      "baseline_cost_eur": 123.0618744381567,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 7.238933790479806,
+      "operating_savings_eur": 115.8229406476769
+    },
+    {
+      "timestamp": "2024-05-30T18:00:00Z",
+      "demand_kw": 538.8316302153827,
+      "solar_kw": 284.62483227415424,
+      "charge_kw": 0.0,
+      "discharge_kw": 169.92408657036432,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 84.28271137086412,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 8.943372977387586,
+      "baseline_cost_eur": 86.43031130001768,
+      "energy_cost_eur": 28.6561218660938,
+      "wear_cost_eur": 3.3984817314072866,
+      "operating_savings_eur": 54.37570770251659
+    },
+    {
+      "timestamp": "2024-05-30T19:00:00Z",
+      "demand_kw": 532.2902584337845,
+      "solar_kw": 117.12681238194017,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 415.16344605184435,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 141.1555716576271,
+      "energy_cost_eur": 141.1555716576271,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T20:00:00Z",
+      "demand_kw": 569.2998537057774,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 569.2998537057774,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 193.56195025996433,
+      "energy_cost_eur": 193.56195025996433,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T21:00:00Z",
+      "demand_kw": 546.6179338677791,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 546.6179338677791,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 185.85009751504492,
+      "energy_cost_eur": 185.85009751504492,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T22:00:00Z",
+      "demand_kw": 464.5131189057761,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 464.5131189057761,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 97.54775497021298,
+      "energy_cost_eur": 97.54775497021298,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-30T23:00:00Z",
+      "demand_kw": 472.43948060147835,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 472.43948060147835,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 99.21229092631044,
+      "energy_cost_eur": 99.21229092631044,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T00:00:00Z",
+      "demand_kw": 406.6092491993704,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 406.6092491993704,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 48.793109903924446,
+      "energy_cost_eur": 48.793109903924446,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T01:00:00Z",
+      "demand_kw": 404.72019133847476,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 404.72019133847476,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 48.56642296061697,
+      "energy_cost_eur": 48.56642296061697,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T02:00:00Z",
+      "demand_kw": 435.4661989005889,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 435.4661989005889,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 52.255943868070666,
+      "energy_cost_eur": 52.255943868070666,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T03:00:00Z",
+      "demand_kw": 435.9998867493732,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 435.9998867493732,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 52.31998640992479,
+      "energy_cost_eur": 52.31998640992479,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T04:00:00Z",
+      "demand_kw": 418.7156186681892,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 418.7156186681892,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 50.24587424018271,
+      "energy_cost_eur": 50.24587424018271,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T05:00:00Z",
+      "demand_kw": 443.97471754092015,
+      "solar_kw": 150.5685812764279,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 293.40613626449226,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 35.20873635173907,
+      "energy_cost_eur": 35.20873635173907,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T06:00:00Z",
+      "demand_kw": 381.14063819786435,
+      "solar_kw": 394.1481392908028,
+      "charge_kw": 13.007501092938469,
+      "discharge_kw": 0.0,
+      "soc_kwh": 12.357126038291545,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.650375054646924,
+      "baseline_cost_eur": -0.8454875710410005,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -0.8454875710410005
+    },
+    {
+      "timestamp": "2024-05-31T07:00:00Z",
+      "demand_kw": 412.59679368404494,
+      "solar_kw": 613.3042130135188,
+      "charge_kw": 200.7074193294739,
+      "discharge_kw": 0.0,
+      "soc_kwh": 203.02917440129175,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 10.035370966473705,
+      "baseline_cost_eur": -13.045982256415805,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -13.045982256415805
+    },
+    {
+      "timestamp": "2024-05-31T08:00:00Z",
+      "demand_kw": 743.1980981806364,
+      "solar_kw": 806.7220433958285,
+      "charge_kw": 63.52394521519204,
+      "discharge_kw": 0.0,
+      "soc_kwh": 263.3769223557242,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 3.176197260759605,
+      "baseline_cost_eur": -4.129056438987483,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -4.129056438987483
+    },
+    {
+      "timestamp": "2024-05-31T09:00:00Z",
+      "demand_kw": 743.1123711639037,
+      "solar_kw": 851.1571025766126,
+      "charge_kw": 108.04473141270887,
+      "discharge_kw": 0.0,
+      "soc_kwh": 366.0194171977976,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 5.4022365706354485,
+      "baseline_cost_eur": -7.0229075418260765,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -7.0229075418260765
+    },
+    {
+      "timestamp": "2024-05-31T10:00:00Z",
+      "demand_kw": 739.0816079435118,
+      "solar_kw": 1035.4746300119086,
+      "charge_kw": 296.3930220683968,
+      "discharge_kw": 0.0,
+      "soc_kwh": 647.5927881627746,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.819651103419854,
+      "baseline_cost_eur": -19.265546434445795,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -19.265546434445795
+    },
+    {
+      "timestamp": "2024-05-31T11:00:00Z",
+      "demand_kw": 745.0302906400162,
+      "solar_kw": 1158.7603113504215,
+      "charge_kw": 370.95495982865833,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 42.775060881746924,
+      "loss_kwh": 18.54774799143293,
+      "baseline_cost_eur": -26.892451346176344,
+      "energy_cost_eur": -2.78037895731355,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -24.112072388862792
+    },
+    {
+      "timestamp": "2024-05-31T12:00:00Z",
+      "demand_kw": 700.6921684444062,
+      "solar_kw": 1147.3861648061472,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 446.69399636174103,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -29.03510976351317,
+      "energy_cost_eur": -29.03510976351317,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T13:00:00Z",
+      "demand_kw": 659.2776934488497,
+      "solar_kw": 1142.9175426427212,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 483.63984919387144,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -31.436590197601646,
+      "energy_cost_eur": -31.436590197601646,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T14:00:00Z",
+      "demand_kw": 710.2260809293075,
+      "solar_kw": 943.9824002467975,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 233.75631931749,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -15.194160755636851,
+      "energy_cost_eur": -15.194160755636851,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T15:00:00Z",
+      "demand_kw": 752.1641526426863,
+      "solar_kw": 966.2845572477529,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 214.1204046050666,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -13.91782629932933,
+      "energy_cost_eur": -13.91782629932933,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T16:00:00Z",
+      "demand_kw": 785.4984176647326,
+      "solar_kw": 730.5543901314581,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 54.94402753327449,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 11.538245781987643,
+      "energy_cost_eur": 11.538245781987643,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T17:00:00Z",
+      "demand_kw": 785.5391664492884,
+      "solar_kw": 511.12817672470885,
+      "charge_kw": 0.0,
+      "discharge_kw": 274.4109897245795,
+      "soc_kwh": 711.1463266057058,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.442683669714695,
+      "baseline_cost_eur": 93.29973650635704,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 5.488219794491591,
+      "operating_savings_eur": 87.81151671186545
+    },
+    {
+      "timestamp": "2024-05-31T18:00:00Z",
+      "demand_kw": 523.3846689708296,
+      "solar_kw": 367.34554979654314,
+      "charge_kw": 0.0,
+      "discharge_kw": 156.03911917428644,
+      "soc_kwh": 546.89462221172,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 8.212585219699276,
+      "baseline_cost_eur": 53.05330051925739,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 3.1207823834857287,
+      "operating_savings_eur": 49.93251813577166
+    },
+    {
+      "timestamp": "2024-05-31T19:00:00Z",
+      "demand_kw": 544.5315984376485,
+      "solar_kw": 127.7459543653809,
+      "charge_kw": 0.0,
+      "discharge_kw": 416.78564407226764,
+      "soc_kwh": 108.17289160933302,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 21.936086530119326,
+      "baseline_cost_eur": 141.707118984571,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 8.335712881445353,
+      "operating_savings_eur": 133.37140610312565
+    },
+    {
+      "timestamp": "2024-05-31T20:00:00Z",
+      "demand_kw": 536.9637741842845,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 102.76424702886636,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 434.19952715541814,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 5.408644580466645,
+      "baseline_cost_eur": 182.56768322265674,
+      "energy_cost_eur": 147.62783923284218,
+      "wear_cost_eur": 2.0552849405773275,
+      "operating_savings_eur": 32.88455904923723
+    },
+    {
+      "timestamp": "2024-05-31T21:00:00Z",
+      "demand_kw": 451.67138948567106,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 451.67138948567106,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 153.56827242512816,
+      "energy_cost_eur": 153.56827242512816,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T22:00:00Z",
+      "demand_kw": 453.04777618076434,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 453.04777618076434,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 95.1400329979605,
+      "energy_cost_eur": 95.1400329979605,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-05-31T23:00:00Z",
+      "demand_kw": 443.34434431081866,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 443.34434431081866,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 93.10231230527191,
+      "energy_cost_eur": 93.10231230527191,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T00:00:00Z",
+      "demand_kw": 317.65717269209676,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 317.65717269209676,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 38.11886072305161,
+      "energy_cost_eur": 38.11886072305161,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T01:00:00Z",
+      "demand_kw": 310.22081193873515,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 310.22081193873515,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 37.226497432648216,
+      "energy_cost_eur": 37.226497432648216,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T02:00:00Z",
+      "demand_kw": 298.73315037547883,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 298.73315037547883,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 35.84797804505746,
+      "energy_cost_eur": 35.84797804505746,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T03:00:00Z",
+      "demand_kw": 302.4596416323077,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 302.4596416323077,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 36.29515699587692,
+      "energy_cost_eur": 36.29515699587692,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T04:00:00Z",
+      "demand_kw": 303.02548155845125,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 303.02548155845125,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 36.36305778701415,
+      "energy_cost_eur": 36.36305778701415,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T05:00:00Z",
+      "demand_kw": 343.36483624637015,
+      "solar_kw": 109.03005746093058,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 234.33477878543957,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 28.120173454252747,
+      "energy_cost_eur": 28.120173454252747,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T06:00:00Z",
+      "demand_kw": 320.7597450891225,
+      "solar_kw": 357.9234197318703,
+      "charge_kw": 37.16367464274782,
+      "discharge_kw": 0.0,
+      "soc_kwh": 35.30549091061043,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 1.8581837321373926,
+      "baseline_cost_eur": -2.4156388517786085,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -2.4156388517786085
+    },
+    {
+      "timestamp": "2024-06-01T07:00:00Z",
+      "demand_kw": 422.12837382555995,
+      "solar_kw": 478.3186055760376,
+      "charge_kw": 56.190231750477665,
+      "discharge_kw": 0.0,
+      "soc_kwh": 88.68621107356421,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 2.8095115875238856,
+      "baseline_cost_eur": -3.6523650637810485,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -3.6523650637810485
+    },
+    {
+      "timestamp": "2024-06-01T08:00:00Z",
+      "demand_kw": 530.5547142834953,
+      "solar_kw": 597.0308975869715,
+      "charge_kw": 66.4761833034762,
+      "discharge_kw": 0.0,
+      "soc_kwh": 151.8385852118666,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 3.323809165173813,
+      "baseline_cost_eur": -4.320951914725954,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -4.320951914725954
+    },
+    {
+      "timestamp": "2024-06-01T09:00:00Z",
+      "demand_kw": 555.201740915711,
+      "solar_kw": 706.1553829484885,
+      "charge_kw": 150.95364203277757,
+      "discharge_kw": 0.0,
+      "soc_kwh": 295.24454514300527,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 7.547682101638885,
+      "baseline_cost_eur": -9.811986732130542,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -9.811986732130542
+    },
+    {
+      "timestamp": "2024-06-01T10:00:00Z",
+      "demand_kw": 531.27210466423,
+      "solar_kw": 775.873942491455,
+      "charge_kw": 244.60183782722493,
+      "discharge_kw": 0.0,
+      "soc_kwh": 527.6162910788689,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 12.230091891361257,
+      "baseline_cost_eur": -15.89911945876962,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -15.89911945876962
+    },
+    {
+      "timestamp": "2024-06-01T11:00:00Z",
+      "demand_kw": 530.5232308091985,
+      "solar_kw": 813.8188520422289,
+      "charge_kw": 283.2956212330304,
+      "discharge_kw": 0.0,
+      "soc_kwh": 796.7471312502478,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 14.164781061651532,
+      "baseline_cost_eur": -18.414215380146974,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -18.414215380146974
+    },
+    {
+      "timestamp": "2024-06-01T12:00:00Z",
+      "demand_kw": 591.4054329127639,
+      "solar_kw": 829.2626532293726,
+      "charge_kw": 213.95038815763394,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 23.906832158974794,
+      "loss_kwh": 10.697519407881707,
+      "baseline_cost_eur": -15.460719320579567,
+      "energy_cost_eur": -1.5539440903333617,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": -13.906775230246206
+    },
+    {
+      "timestamp": "2024-06-01T13:00:00Z",
+      "demand_kw": 574.2663208946275,
+      "solar_kw": 983.6528821425683,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 409.3865612479408,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -26.61012648111615,
+      "energy_cost_eur": -26.61012648111615,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T14:00:00Z",
+      "demand_kw": 489.7387410841634,
+      "solar_kw": 775.938253595777,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 286.19951251161365,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -18.602968313254888,
+      "energy_cost_eur": -18.602968313254888,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T15:00:00Z",
+      "demand_kw": 523.2798166861285,
+      "solar_kw": 599.4771731250456,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 76.19735643891715,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": -4.952828168529615,
+      "energy_cost_eur": -4.952828168529615,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T16:00:00Z",
+      "demand_kw": 573.0000729961623,
+      "solar_kw": 547.514241319966,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 1000.0,
+      "grid_import_kw": 25.485831676196312,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 5.352024652001226,
+      "energy_cost_eur": 5.352024652001226,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T17:00:00Z",
+      "demand_kw": 593.0843894468024,
+      "solar_kw": 493.97946458402,
+      "charge_kw": 0.0,
+      "discharge_kw": 99.10492486278247,
+      "soc_kwh": 895.679026460229,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 5.216048676988545,
+      "baseline_cost_eur": 33.695674453346044,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 1.9820984972556495,
+      "operating_savings_eur": 31.713575956090395
+    },
+    {
+      "timestamp": "2024-06-01T18:00:00Z",
+      "demand_kw": 372.8713327364301,
+      "solar_kw": 290.10462354948936,
+      "charge_kw": 0.0,
+      "discharge_kw": 82.76670918694072,
+      "soc_kwh": 808.5561746845019,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 4.356142588786349,
+      "baseline_cost_eur": 28.140681123559844,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 1.6553341837388142,
+      "operating_savings_eur": 26.485346939821028
+    },
+    {
+      "timestamp": "2024-06-01T19:00:00Z",
+      "demand_kw": 438.4952304674525,
+      "solar_kw": 118.80193284549124,
+      "charge_kw": 0.0,
+      "discharge_kw": 319.6932976219612,
+      "soc_kwh": 472.03691402980587,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 16.825963032734784,
+      "baseline_cost_eur": 108.69572119146682,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 6.393865952439224,
+      "operating_savings_eur": 102.30185523902759
+    },
+    {
+      "timestamp": "2024-06-01T20:00:00Z",
+      "demand_kw": 361.03779602184613,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 361.03779602184613,
+      "soc_kwh": 91.99712874365201,
+      "grid_import_kw": 0.0,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 19.00198926430767,
+      "baseline_cost_eur": 122.75285064742769,
+      "energy_cost_eur": 0.0,
+      "wear_cost_eur": 7.220755920436923,
+      "operating_savings_eur": 115.53209472699076
+    },
+    {
+      "timestamp": "2024-06-01T21:00:00Z",
+      "demand_kw": 393.28808603036464,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 87.3972723064694,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 305.89081372389523,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 4.599856437182595,
+      "baseline_cost_eur": 133.71794925032398,
+      "energy_cost_eur": 104.0028766661244,
+      "wear_cost_eur": 1.7479454461293882,
+      "operating_savings_eur": 27.9671271380702
+    },
+    {
+      "timestamp": "2024-06-01T22:00:00Z",
+      "demand_kw": 380.3190576407159,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 380.3190576407159,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 79.86700210455034,
+      "energy_cost_eur": 79.86700210455034,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-01T23:00:00Z",
+      "demand_kw": 363.5281966669886,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 363.5281966669886,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 76.3409213000676,
+      "energy_cost_eur": 76.3409213000676,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T00:00:00Z",
+      "demand_kw": 316.00381697125965,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 316.00381697125965,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 37.92045803655116,
+      "energy_cost_eur": 37.92045803655116,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T01:00:00Z",
+      "demand_kw": 368.9679712790766,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 368.9679712790766,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 44.276156553489194,
+      "energy_cost_eur": 44.276156553489194,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T02:00:00Z",
+      "demand_kw": 331.2339006800353,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 331.2339006800353,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 39.74806808160423,
+      "energy_cost_eur": 39.74806808160423,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T03:00:00Z",
+      "demand_kw": 347.688276633627,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 347.688276633627,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 41.72259319603524,
+      "energy_cost_eur": 41.72259319603524,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T04:00:00Z",
+      "demand_kw": 297.0614278296894,
+      "solar_kw": 0.0,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 297.0614278296894,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 35.64737133956273,
+      "energy_cost_eur": 35.64737133956273,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T05:00:00Z",
+      "demand_kw": 369.3141806941806,
+      "solar_kw": 60.537983134040545,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 308.7761975601401,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 37.053143707216805,
+      "energy_cost_eur": 37.053143707216805,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T06:00:00Z",
+      "demand_kw": 320.5272215310427,
+      "solar_kw": 140.7159340215403,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 179.8112875095024,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 37.7603703769955,
+      "energy_cost_eur": 37.7603703769955,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T07:00:00Z",
+      "demand_kw": 371.07854285509467,
+      "solar_kw": 294.7324305676707,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 76.34611228742398,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 16.032683580359034,
+      "energy_cost_eur": 16.032683580359034,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T08:00:00Z",
+      "demand_kw": 584.4827949889248,
+      "solar_kw": 337.80471146649046,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 246.6780835224343,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 51.8023975397112,
+      "energy_cost_eur": 51.8023975397112,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T09:00:00Z",
+      "demand_kw": 549.2666126467351,
+      "solar_kw": 347.12349904651893,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 202.14311360021617,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 42.45005385604539,
+      "energy_cost_eur": 42.45005385604539,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T10:00:00Z",
+      "demand_kw": 554.0075637750856,
+      "solar_kw": 372.5228227056651,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 181.48474106942052,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 38.111795624578306,
+      "energy_cost_eur": 38.111795624578306,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T11:00:00Z",
+      "demand_kw": 535.2963888558345,
+      "solar_kw": 514.5981688530807,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 20.69822000275383,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 4.346626200578304,
+      "energy_cost_eur": 4.346626200578304,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T12:00:00Z",
+      "demand_kw": 515.02808719666,
+      "solar_kw": 460.8098810278066,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 54.21820616885333,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 11.385823295459199,
+      "energy_cost_eur": 11.385823295459199,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T13:00:00Z",
+      "demand_kw": 561.2235111331014,
+      "solar_kw": 431.7385788817671,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 129.48493225133427,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 27.191835772780195,
+      "energy_cost_eur": 27.191835772780195,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T14:00:00Z",
+      "demand_kw": 563.1305591054282,
+      "solar_kw": 422.6939911511094,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 140.43656795431883,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 29.491679270406955,
+      "energy_cost_eur": 29.491679270406955,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T15:00:00Z",
+      "demand_kw": 504.035522727183,
+      "solar_kw": 389.5442283898735,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 114.49129433730945,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 24.043171810834984,
+      "energy_cost_eur": 24.043171810834984,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T16:00:00Z",
+      "demand_kw": 574.5432694839085,
+      "solar_kw": 306.3836041617332,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 268.1596653221753,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 56.313529717656806,
+      "energy_cost_eur": 56.313529717656806,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T17:00:00Z",
+      "demand_kw": 637.24085345553,
+      "solar_kw": 280.08081668424643,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 357.16003677128356,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 121.43441250223641,
+      "energy_cost_eur": 121.43441250223641,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T18:00:00Z",
+      "demand_kw": 467.8737836753586,
+      "solar_kw": 182.1095812569209,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 285.76420241843766,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 97.1598288222688,
+      "energy_cost_eur": 97.1598288222688,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    },
+    {
+      "timestamp": "2024-06-02T19:00:00Z",
+      "demand_kw": 457.83199539173904,
+      "solar_kw": 67.35712909802993,
+      "charge_kw": 0.0,
+      "discharge_kw": 0.0,
+      "soc_kwh": 0.0,
+      "grid_import_kw": 390.4748662937091,
+      "grid_export_kw": 0.0,
+      "loss_kwh": 0.0,
+      "baseline_cost_eur": 132.76145453986112,
+      "energy_cost_eur": 132.76145453986112,
+      "wear_cost_eur": 0.0,
+      "operating_savings_eur": 0.0
+    }
+  ],
+  "monthly_energy": [
+    {
+      "month": "2023-01",
+      "observed_hours": 744,
+      "demand_kwh": 449981.0599466948,
+      "solar_kwh": 85920.14615851681,
+      "solar_only_import_kwh": 364171.9387435203,
+      "solar_only_export_kwh": 111.0249553422849,
+      "solar_only_cost_eur": 81354.77065996749,
+      "peak_import_kw": 942.4193828737481,
+      "solar_self_consumption_pct": 99.87078123082165
+    },
+    {
+      "month": "2023-02",
+      "observed_hours": 672,
+      "demand_kwh": 398712.83953884174,
+      "solar_kwh": 95356.8628288025,
+      "solar_only_import_kwh": 303439.175804346,
+      "solar_only_export_kwh": 83.1990943067583,
+      "solar_only_cost_eur": 68040.2426638962,
+      "peak_import_kw": 922.1737143024684,
+      "solar_self_consumption_pct": 99.91274975723967
+    },
+    {
+      "month": "2023-03",
+      "observed_hours": 744,
+      "demand_kwh": 431130.1373961172,
+      "solar_kwh": 140783.9741566008,
+      "solar_only_import_kwh": 293722.7197842779,
+      "solar_only_export_kwh": 3376.5565447614595,
+      "solar_only_cost_eur": 65629.50909467896,
+      "peak_import_kw": 821.8511250283132,
+      "solar_self_consumption_pct": 97.60160446883994
+    },
+    {
+      "month": "2023-04",
+      "observed_hours": 720,
+      "demand_kwh": 396149.0044123981,
+      "solar_kwh": 185720.9571855692,
+      "solar_only_import_kwh": 222007.590166798,
+      "solar_only_export_kwh": 11579.542939969091,
+      "solar_only_cost_eur": 48805.962952886875,
+      "peak_import_kw": 758.6916545998326,
+      "solar_self_consumption_pct": 93.7650854726109
+    },
+    {
+      "month": "2023-05",
+      "observed_hours": 744,
+      "demand_kwh": 405331.47166471765,
+      "solar_kwh": 239629.99281779403,
+      "solar_only_import_kwh": 197659.6506579117,
+      "solar_only_export_kwh": 31958.171810988057,
+      "solar_only_cost_eur": 41463.81052789308,
+      "peak_import_kw": 641.6837713675369,
+      "solar_self_consumption_pct": 86.66353429502128
+    },
+    {
+      "month": "2023-06",
+      "observed_hours": 720,
+      "demand_kwh": 387129.0379374482,
+      "solar_kwh": 264447.02844460245,
+      "solar_only_import_kwh": 169067.78685748624,
+      "solar_only_export_kwh": 46385.77736464049,
+      "solar_only_cost_eur": 33728.69285966669,
+      "peak_import_kw": 630.3994202752339,
+      "solar_self_consumption_pct": 82.45933121749651
+    },
+    {
+      "month": "2023-07",
+      "observed_hours": 744,
+      "demand_kwh": 395769.2287905118,
+      "solar_kwh": 235417.1092197146,
+      "solar_only_import_kwh": 189490.3154602634,
+      "solar_only_export_kwh": 29138.19588946623,
+      "solar_only_cost_eur": 39738.77102887605,
+      "peak_import_kw": 617.6930666311849,
+      "solar_self_consumption_pct": 87.62273651815528
+    },
+    {
+      "month": "2023-08",
+      "observed_hours": 744,
+      "demand_kwh": 412788.1380754026,
+      "solar_kwh": 211950.98777941405,
+      "solar_only_import_kwh": 218577.1811029481,
+      "solar_only_export_kwh": 17740.030806959527,
+      "solar_only_cost_eur": 47572.80606604293,
+      "peak_import_kw": 671.0653421056513,
+      "solar_self_consumption_pct": 91.63012591126856
+    },
+    {
+      "month": "2023-09",
+      "observed_hours": 720,
+      "demand_kwh": 410020.0613319442,
+      "solar_kwh": 157253.48253218894,
+      "solar_only_import_kwh": 260100.44009280528,
+      "solar_only_export_kwh": 7333.861293049997,
+      "solar_only_cost_eur": 57900.82642491409,
+      "peak_import_kw": 791.1782220003678,
+      "solar_self_consumption_pct": 95.33628052304101
+    },
+    {
+      "month": "2023-10",
+      "observed_hours": 744,
+      "demand_kwh": 438291.53163465596,
+      "solar_kwh": 113862.03940988524,
+      "solar_only_import_kwh": 325336.09992297157,
+      "solar_only_export_kwh": 906.6076982008652,
+      "solar_only_cost_eur": 72876.35977132372,
+      "peak_import_kw": 884.0692858658243,
+      "solar_self_consumption_pct": 99.20376650295431
+    },
+    {
+      "month": "2023-11",
+      "observed_hours": 720,
+      "demand_kwh": 436308.4887914247,
+      "solar_kwh": 78214.3046130036,
+      "solar_only_import_kwh": 358208.91322424496,
+      "solar_only_export_kwh": 114.72904582384217,
+      "solar_only_cost_eur": 80073.88544823269,
+      "peak_import_kw": 923.4923942151459,
+      "solar_self_consumption_pct": 99.85331449740363
+    },
+    {
+      "month": "2023-12",
+      "observed_hours": 744,
+      "demand_kwh": 449429.2619240558,
+      "solar_kwh": 65667.59098134925,
+      "solar_only_import_kwh": 383761.6709427065,
+      "solar_only_export_kwh": 0.0,
+      "solar_only_cost_eur": 85433.63333476351,
+      "peak_import_kw": 935.1658184720518,
+      "solar_self_consumption_pct": 100.0
+    },
+    {
+      "month": "2024-01",
+      "observed_hours": 744,
+      "demand_kwh": 454092.71620021836,
+      "solar_kwh": 78356.82882219604,
+      "solar_only_import_kwh": 375843.30116923165,
+      "solar_only_export_kwh": 107.41379120934096,
+      "solar_only_cost_eur": 83969.69872212576,
+      "peak_import_kw": 951.9646921773874,
+      "solar_self_consumption_pct": 99.8629171281892
+    },
+    {
+      "month": "2024-02",
+      "observed_hours": 696,
+      "demand_kwh": 415642.5110184552,
+      "solar_kwh": 94009.63449572827,
+      "solar_only_import_kwh": 322001.36769902,
+      "solar_only_export_kwh": 368.49117629311445,
+      "solar_only_cost_eur": 72067.16463755339,
+      "peak_import_kw": 926.8079749298399,
+      "solar_self_consumption_pct": 99.60802828532447
+    },
+    {
+      "month": "2024-03",
+      "observed_hours": 744,
+      "demand_kwh": 423570.4647860167,
+      "solar_kwh": 141590.05897705015,
+      "solar_only_import_kwh": 284601.49119675305,
+      "solar_only_export_kwh": 2621.0853877864765,
+      "solar_only_cost_eur": 63753.823647180856,
+      "peak_import_kw": 802.5715262089066,
+      "solar_self_consumption_pct": 98.14882103537275
+    },
+    {
+      "month": "2024-04",
+      "observed_hours": 720,
+      "demand_kwh": 400878.27112613997,
+      "solar_kwh": 176789.75237131538,
+      "solar_only_import_kwh": 235487.0496992963,
+      "solar_only_export_kwh": 11398.530944471715,
+      "solar_only_cost_eur": 51736.84904000911,
+      "peak_import_kw": 683.9173208916338,
+      "solar_self_consumption_pct": 93.55249340440778
+    },
+    {
+      "month": "2024-05",
+      "observed_hours": 744,
+      "demand_kwh": 404717.26513358776,
+      "solar_kwh": 250407.30773775096,
+      "solar_only_import_kwh": 187370.90777539383,
+      "solar_only_export_kwh": 33060.95037955701,
+      "solar_only_cost_eur": 39044.1194463584,
+      "peak_import_kw": 610.4873120579392,
+      "solar_self_consumption_pct": 86.79713037201718
+    },
+    {
+      "month": "2024-06",
+      "observed_hours": 720,
+      "demand_kwh": 378692.1094456649,
+      "solar_kwh": 237798.1728674939,
+      "solar_only_import_kwh": 174357.84361434428,
+      "solar_only_export_kwh": 33463.90703617328,
+      "solar_only_cost_eur": 36004.107281899895,
+      "peak_import_kw": 652.6992811601955,
+      "solar_self_consumption_pct": 85.9276012794177
+    },
+    {
+      "month": "2024-07",
+      "observed_hours": 744,
+      "demand_kwh": 402300.20521656383,
+      "solar_kwh": 242742.96484497952,
+      "solar_only_import_kwh": 186144.4467988753,
+      "solar_only_export_kwh": 26587.20642729099,
+      "solar_only_cost_eur": 39264.09841403188,
+      "peak_import_kw": 627.9291543153571,
+      "solar_self_consumption_pct": 89.04717735310265
+    },
+    {
+      "month": "2024-08",
+      "observed_hours": 744,
+      "demand_kwh": 408512.78315778327,
+      "solar_kwh": 195024.96220663312,
+      "solar_only_import_kwh": 228597.96553140986,
+      "solar_only_export_kwh": 15110.144580259739,
+      "solar_only_cost_eur": 49867.99600961609,
+      "peak_import_kw": 688.9915923390547,
+      "solar_self_consumption_pct": 92.2521997136704
+    },
+    {
+      "month": "2024-09",
+      "observed_hours": 720,
+      "demand_kwh": 408792.08930972137,
+      "solar_kwh": 157347.1593033193,
+      "solar_only_import_kwh": 255443.31224481424,
+      "solar_only_export_kwh": 3998.382238412157,
+      "solar_only_cost_eur": 57170.265674936425,
+      "peak_import_kw": 763.628340717029,
+      "solar_self_consumption_pct": 97.4588786628779
+    },
+    {
+      "month": "2024-10",
+      "observed_hours": 744,
+      "demand_kwh": 443381.6004292543,
+      "solar_kwh": 117094.62263657653,
+      "solar_only_import_kwh": 326776.4997164682,
+      "solar_only_export_kwh": 489.5219237904164,
+      "solar_only_cost_eur": 73390.65202731152,
+      "peak_import_kw": 950.638508206593,
+      "solar_self_consumption_pct": 99.58194329272511
+    },
+    {
+      "month": "2024-11",
+      "observed_hours": 720,
+      "demand_kwh": 432750.0004642433,
+      "solar_kwh": 83268.77034586981,
+      "solar_only_import_kwh": 349566.5117954539,
+      "solar_only_export_kwh": 85.28167708045589,
+      "solar_only_cost_eur": 78051.78173244157,
+      "peak_import_kw": 928.9830697480876,
+      "solar_self_consumption_pct": 99.89758263905398
+    },
+    {
+      "month": "2024-12",
+      "observed_hours": 744,
+      "demand_kwh": 453452.2629227413,
+      "solar_kwh": 74906.53735675054,
+      "solar_only_import_kwh": 378557.02252238686,
+      "solar_only_export_kwh": 11.296956396135442,
+      "solar_only_cost_eur": 84414.5197634213,
+      "peak_import_kw": 960.4293981087758,
+      "solar_self_consumption_pct": 99.98491859750193
+    }
+  ]
+}
