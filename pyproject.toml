@@ -8,7 +8,7 @@ description = "Reproducible solar forecasting and battery economics case study"
 requires-python = ">=3.12,<3.13"
 dependencies = ["numpy==2.2.6", "pandas==2.2.3", "scikit-learn==1.6.1"]
 [project.optional-dependencies]
-presentation = ["matplotlib==3.10.8"]
+presentation = ["matplotlib==3.11.2"]
 [project.scripts]
 solar-grid = "solar_grid.cli:main"
 [tool.setuptools.packages.find]
