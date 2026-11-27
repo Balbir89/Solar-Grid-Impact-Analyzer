@@ -6,7 +6,7 @@ An independent portfolio case study by **Balbir Singh**, combining time-series f
 
 **All input data are synthetic. No customer savings, production deployment or verified carbon reduction is claimed.**
 
-[Methodology & assumptions](docs/methodology.md) · [Measured results](reports/metrics.json) · [SQL queries](sql/) · [Case-study notebook](notebooks/01_case_study.ipynb) · [Upload guide](UPLOAD_GUIDE.md)
+[Methodology & assumptions](docs/methodology.md) · [Measured results](reports/metrics.json) · [SQL queries](sql/) · [Case-study notebook](notebooks/01_case_study.ipynb) 
 
 ![Measured forecast quality and cumulative discounted battery cash flows](docs/assets/case-study-summary.png)
 
